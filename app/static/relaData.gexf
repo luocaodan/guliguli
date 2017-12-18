@@ -1,0 +1,1256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gexf xmlns="http://www.gexf.net/1.2draft" version="1.2" xmlns:viz="http://www.gexf.net/1.2draft/viz" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd">
+  <meta lastmodifieddate="2014-01-30">
+    <creator>Gephi 0.8.1</creator>
+    <description></description>
+  </meta>
+  <graph defaultedgetype="undirected" mode="static">
+    <attributes class="node" mode="static">
+      <attribute id="modularity_class" title="Modularity Class" type="integer"></attribute>
+    </attributes>
+    <nodes>
+      <node id="0" label="初学者">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="17.5885"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="1" label="超越无限">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="10.4818"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="2" label="Booty Music">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="10.3976"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="3" label="追梦赤子心">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="9.4901"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="4" label="春风十里">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="8.7396"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="5" label="夜空中最亮的星">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="7.6230"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="6" label="Hall of Fame">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="6.4262"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="7" label="Wake">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="5.9301"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="8" label="Butter-Fly">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="5.3698"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="9" label="Counting Stars">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="5.3165"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="10" label="我的滑板鞋2016">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="5.1791"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="11" label="Perfect Illusion">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="5.0663"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="12" label="小跳蛙">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="5.3872"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="13" label="The Phoenix">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="5.0933"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="14" label="一路向北">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="4.9951"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="15" label="和你在一起">
+        <attvalues>
+          <attvalue for="modularity_class" value="0"></attvalue>
+        </attvalues>
+        <viz:size value="4.7658"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      
+      <node id="16" label="晴天">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="126.3405"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="17" label="告白气球">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="22.8359"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="18" label="理想三旬">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="11.4239"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="19" label="七里香">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="10.7125"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="20" label="你在终点等我">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="7.0961"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="21" label="なんでもないや">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="6.5209"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="22" label="陪你度过漫长岁月">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="6.4863"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="23" label="床边故事">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="5.7698"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="24" label="我好想你">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="5.3345"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="25" label="红色高跟鞋">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="5.3999"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="26" label="关于郑州的记忆">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="4.8649"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="27" label="Sugar">
+        <attvalues>
+          <attvalue for="modularity_class" value="1"></attvalue>
+        </attvalues>
+        <viz:size value="4.6493"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      
+      <node id="28" label="雅俗共赏">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="65.2349"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="29" label="演员">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="16.7763"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="30" label="我好像在哪见过你">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="13.2378"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="31" label="火星人来过">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="13.1577"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="32" label="the truth that you leave">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="13.1752"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="33" label="IF YOU">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="9.9239"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="34" label="刚刚好">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="9.7866"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="35" label="See You Again">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="9.6717"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="36" label="你还要我怎样">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="9.4371"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="37" label="绅士">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="8.0217"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="38" label="摄影艺术">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="6.8253"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="39" label="What Are Words">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="6.7984"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="40" label="We Don't Talk Anymore">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="5.9235"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="41" label="全世界谁倾听你">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="5.8291"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="42" label="丑八怪">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="5.0825"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="43" label="小半">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="5.0471"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="44" label="一直很安静">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="4.9789"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="45" label="钟无艳">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="4.8281"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="46" label="天空之城">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="4.7500"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="47" label="遇见">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="4.8239"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="48" label="我要你">
+        <attvalues>
+          <attvalue for="modularity_class" value="2"></attvalue>
+        </attvalues>
+        <viz:size value="4.8433"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      
+      <node id="49" label="成都">
+        <attvalues>
+          <attvalue for="modularity_class" value="3"></attvalue>
+        </attvalues>
+        <viz:size value="18.5299"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="50" label="Five Hundred Miles">
+        <attvalues>
+          <attvalue for="modularity_class" value="3"></attvalue>
+        </attvalues>
+        <viz:size value="11.0261"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="51" label="平凡之路">
+        <attvalues>
+          <attvalue for="modularity_class" value="3"></attvalue>
+        </attvalues>
+        <viz:size value="5.1927"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="52" label="七月上">
+        <attvalues>
+          <attvalue for="modularity_class" value="3"></attvalue>
+        </attvalues>
+        <viz:size value="7.9236"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="53" label="安和桥">
+        <attvalues>
+          <attvalue for="modularity_class" value="3"></attvalue>
+        </attvalues>
+        <viz:size value="7.7877"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="54" label="南方姑娘">
+        <attvalues>
+          <attvalue for="modularity_class" value="3"></attvalue>
+        </attvalues>
+        <viz:size value="7.9037"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="55" label="南山南">
+        <attvalues>
+          <attvalue for="modularity_class" value="3"></attvalue>
+        </attvalues>
+        <viz:size value="6.3221"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="56" label="奇妙能力歌">
+        <attvalues>
+          <attvalue for="modularity_class" value="3"></attvalue>
+        </attvalues>
+        <viz:size value="5.5401"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="57" label="斑马,斑马">
+        <attvalues>
+          <attvalue for="modularity_class" value="3"></attvalue>
+        </attvalues>
+        <viz:size value="4.7349"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      
+      <node id="58" label="Fade">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="52.3238"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="59" label="Faded">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="14.1224"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="60" label="大鱼">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="8.7841"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="61" label="岁月神偷">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="7.0667"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="235" g="81" b="72"></viz:color>
+      </node>
+      <node id="62" label="燕归巢">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="6.1591"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="63" label="I Am You">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="6.2376"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="235" g="81" b="72"></viz:color>
+      </node>
+      <node id="64" label="明天,你好">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="5.8226"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="235" g="81" b="72"></viz:color>
+      </node>
+      <node id="65" label="You">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="5.6571"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="235" g="81" b="72"></viz:color>
+      </node>
+      <node id="66" label="Flower Dance">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="5.4744"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="67" label="以父之名">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="5.0233"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="68" label="Ngẫu Hứng">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="5.1174"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="69" label="Intro - intro">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="4.7774"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="70" label="Purple Passion">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="4.6780"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="71" label="Victory">
+        <attvalues>
+          <attvalue for="modularity_class" value="5"></attvalue>
+        </attvalues>
+        <viz:size value="9.0004"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="72" label="悟空">
+        <attvalues>
+          <attvalue for="modularity_class" value="5"></attvalue>
+        </attvalues>
+        <viz:size value="8.5585"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="73" label="缘分一道桥">
+        <attvalues>
+          <attvalue for="modularity_class" value="5"></attvalue>
+        </attvalues>
+        <viz:size value="7.9202"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="74" label="Young For You">
+        <attvalues>
+          <attvalue for="modularity_class" value="5"></attvalue>
+        </attvalues>
+        <viz:size value="6.7121"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="75" label="Five Hours">
+        <attvalues>
+          <attvalue for="modularity_class" value="5"></attvalue>
+        </attvalues>
+        <viz:size value="6.5971"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="76" label="Breath and Life">
+        <attvalues>
+          <attvalue for="modularity_class" value="5"></attvalue>
+        </attvalues>
+        <viz:size value="6.1794"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="77" label="Intro: The Dawn">
+        <attvalues>
+          <attvalue for="modularity_class" value="5"></attvalue>
+        </attvalues>
+        <viz:size value="5.9667"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="78" label="Go Time">
+        <attvalues>
+          <attvalue for="modularity_class" value="5"></attvalue>
+        </attvalues>
+        <viz:size value="5.2679"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="79" label="江湖">
+        <attvalues>
+          <attvalue for="modularity_class" value="5"></attvalue>
+        </attvalues>
+        <viz:size value="5.1198"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      
+      <node id="80" label="最佳歌手">
+        <attvalues>
+          <attvalue for="modularity_class" value="6"></attvalue>
+        </attvalues>
+        <viz:size value="11.0433"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="81" label="Hello(By Adele)">
+        <attvalues>
+          <attvalue for="modularity_class" value="6"></attvalue>
+        </attvalues>
+        <viz:size value="6.8803"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="82" label="刚好遇见你">
+        <attvalues>
+          <attvalue for="modularity_class" value="6"></attvalue>
+        </attvalues>
+        <viz:size value="9.3246"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="83" label="Uptown Funk">
+        <attvalues>
+          <attvalue for="modularity_class" value="6"></attvalue>
+        </attvalues>
+        <viz:size value="5.9079"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      
+      <node id="84" label="童话镇">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="8.5345"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="85" label="祝你生日快乐">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="8.3487"></viz:size>
+        <viz:position x="172.18353" y="30.8131495" z="0.0"></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="86" label="极乐净土">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="7.0157"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="87" label="Seve">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="6.4571"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="88" label="今年勇">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="6.1874"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="89" label="Unity">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="6.1063"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="90" label="いけないボーダーライン">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="5.9855"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="91" label="Schnappi">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="5.9240"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="92" label="我是全英雄联盟最骚的骚猪">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="5.3689"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="93" label="JULY">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="5.2370"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="94" label="Es rappelt im Karton">
+        <attvalues>
+          <attvalue for="modularity_class" value="7"></attvalue>
+        </attvalues>
+        <viz:size value="4.7924"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      
+      <node id="95" label="英雄">
+        <attvalues>
+          <attvalue for="modularity_class" value="8"></attvalue>
+        </attvalues>
+        <viz:size value="7.3686"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="96" label="Monody">
+        <attvalues>
+          <attvalue for="modularity_class" value="8"></attvalue>
+        </attvalues>
+        <viz:size value="7.2337"></viz:size>
+        <viz:position></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      
+      <node id="97" label="Lost Rivers">
+        <attvalues>
+          <attvalue for="modularity_class" value="9"></attvalue>
+        </attvalues>
+        <viz:size value="8.6425"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="98" label="Stars（弹幕歌词版）">
+        <attvalues>
+          <attvalue for="modularity_class" value="4"></attvalue>
+        </attvalues>
+        <viz:size value="6.4897"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+      <node id="99" label="Hello(By OMFG)">
+        <attvalues>
+          <attvalue for="modularity_class" value="8"></attvalue>
+        </attvalues>
+        <viz:size value="9.8209"></viz:size>
+        <viz:position ></viz:position>
+        <viz:color r="236" g="81" b="72"></viz:color>
+      </node>
+    </nodes>
+    <edges>
+      <edge id="0" source="0" target="1">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="1" source="0" target="2" weight="8.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="2" source="0" target="3" weight="10.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="3" source="0" target="4" weight="6.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="4" source="0" target="5">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="5" source="0" target="6">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="6" source="0" target="7">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="7" source="0" target="8">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="8" source="0" target="9" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="9" source="0" target="10">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="10" source="0" target="11" weight="5.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="11" source="0" target="12" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="12" source="0" target="13" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="13" source="0" target="14">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="14" source="0" target="15">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="15" source="0" target="16">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="16" source="17" target="18">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="17" source="17" target="19">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="18" source="17" target="20" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="19" source="17" target="21" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="20" source="17" target="22" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="21" source="17" target="23" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="22" source="17" target="24" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="23" source="17" target="25" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="24" source="17" target="26" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="25" source="17" target="27" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="26" source="17" target="28" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="27" source="17" target="29" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="28" source="30" target="31" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="29" source="30" target="32" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="30" source="30" target="33" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="31" source="30" target="34" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="32" source="30" target="35" weight="5.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="33" source="30" target="36" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="34" source="30" target="37" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="35" source="30" target="38" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="36" source="30" target="39" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="37" source="30" target="40" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="38" source="30" target="41" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="39" source="30" target="42" weight="9.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="40" source="30" target="43" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="41" source="30" target="44" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="42" source="30" target="45" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="43" source="30" target="46" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="44" source="30" target="47" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="45" source="30" target="48" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="46" source="30" target="49" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="47" source="30" target="50" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="48" source="30" target="51" weight="7.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="49" source="52" target="53" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="50" source="52" target="54" weight="12.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="51" source="52" target="55">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="52" source="52" target="56" weight="13.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="53" source="52" target="57" weight="31.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="54" source="52" target="58">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="55" source="52" target="59" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="56" source="52" target="60">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="57" source="52" target="61" weight="17.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="58" source="62" target="63" weight="5.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="59" source="62" target="64">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="60" source="62" target="65" weight="5.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="61" source="62" target="66">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="62" source="62" target="67" weight="8.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="63" source="62" target="68">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="64" source="62" target="69" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="65" source="62" target="70">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="66" source="62" target="71">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="67" source="62" target="72">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="68" source="62" target="73" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="69" source="62" target="74" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="70" source="62" target="75">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="71" source="85" target="76" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="72" source="85" target="77">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="73" source="85" target="78" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="74" source="85" target="79">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="75" source="85" target="80" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="76" source="85" target="81" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="77" source="85" target="82" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="78" source="85" target="83" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="79" source="85" target="84" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="80" source="86" target="87" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="81" source="86" target="88">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="82" source="86" target="89" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="83" source="86" target="90" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="84" source="91" target="92" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="85" source="91" target="93">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="86" source="91" target="94" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="87" source="91" target="95" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="88" source="91" target="96" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="89" source="91" target="97" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="90" source="91" target="98">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="91" source="91" target="99" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="92" source="91" target="100" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="93" source="91" target="101" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="94" source="91" target="102" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="95" source="103" target="104">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="96" source="103" target="105">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="97" source="106" target="107" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="98" source="30" target="18" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="99" source="30" target="1">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="100" source="30" target="26" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="101" source="30" target="15" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="102" source="52" target="36" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="103" source="52" target="28">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="104" source="52" target="5">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="105" source="62" target="53">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="106" source="62" target="20" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="107" source="62" target="54" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="108" source="62" target="36">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="109" source="62" target="37">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="110" source="62" target="38">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="111" source="62" target="39">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="112" source="62" target="40" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="113" source="62" target="58" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="114" source="62" target="59" weight="3.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="115" source="62" target="42">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="116" source="62" target="10">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="117" source="62" target="23" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="118" source="62" target="24" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="119" source="62" target="25" weight="9.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="120" source="62" target="26">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="121" source="62" target="44">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="122" source="62" target="55">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="123" source="62" target="15">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="124" source="62" target="47">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="125" source="62" target="48" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="126" source="62" target="49" weight="19.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="127" source="62" target="50">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="128" source="62" target="51" weight="2.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="129" source="62" target="16" weight="21.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="130" source="62" target="29">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="131" source="85" target="2" weight="5.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="132" source="85" target="4" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="133" source="85" target="9" weight="12.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="134" source="85" target="27" weight="6.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="135" source="86" target="53">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="136" source="86" target="35">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="137" source="86" target="21">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="138" source="86" target="41">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="139" source="86" target="72">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="140" source="91" target="10">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="141" source="91" target="73" weight="4.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="142" source="103" target="98" weight="6.0">
+        <attvalues></attvalues>
+      </edge>
+      <edge id="143" source="103" target="102" weight="7.0">
+        <attvalues></attvalues>
+      </edge>
+    </edges>
+  </graph>
+</gexf>

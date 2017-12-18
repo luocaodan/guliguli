@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}网易云音乐数据分析{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content_header %}
+<h1>网易音乐推荐</h1>
+{% endblock %}
+
+{% block content_container %}
+<div class="row">
+    {% for song in data %}
+    <div class="col-sm-0 col-md-4">
+         <div class="thumbnail">
+            <a href="http://music.163.com/#/song?id={{song['id']}}"><img src={{song['cover']}} alt={{song['name']}} width="480" height="480"></a>
+            <div class="caption" >
+                <h3>{{song['name']}}</h3>
+                <a href="http://music.163.com/#/{{song['artist']['url']}}"><p>{{song['artist']['name']}}</p></a>
+                <p>{{song['total']}}</p>    
+                <a  href="/song/{{song['id']}}" alt={{song['hotComments'][0]['content']}}><p style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap; ">{{song['hotComments'][0]['content']}}</p></a>
+            </div>
+         </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
+
+
+

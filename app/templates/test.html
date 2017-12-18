@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content_header %}
+<h1>网易音乐歌曲推荐</h1>
+{% endblock %}
+
+{% block content_container %}
+// Mixin
+.text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Usage
+.branch-name {
+  display: inline-block;
+  max-width: 200px;
+  .text-overflow();
+}
+</div>
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}
+
+
+
