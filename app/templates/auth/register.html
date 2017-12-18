@@ -1,21 +1,58 @@
-{% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="../static/js/vue.js"></script>
+        <script src="../static/js/md5.js"></script>
+        <script src="../static/js/jquery.min.js"></script>
+        <script href="../static/js/bootstrap.min.js"></script>
+        <link href="../static/css/mystyle.css" rel="stylesheet">
+        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../static/css/bootstrap-theme.css" rel="stylesheet">
+    </head>
 
-{% block title %}Flasky - Register{% endblock %}
+    <body>
+        <div id="app" class="register-wallpaper">
+            <div class="content">
+                <div id="register" class="register-form">
+                    <img class="logo" src="../static/image/logo.png">
+                    <form class="from-horizontal" role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control reg-input" v-model="username" placeholder="用户名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control reg-input" v-model="password" placeholder="密码" required> 
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control reg-input" v-model="repassword" placeholder="确认密码" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn-register" v-on:click="register">biu~</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script>
+            
+        </script>
+        
+    </body>
 
-{% block content_header %}
-<h1>Register</h1>
-{% endblock %}
-
-{% block content_container %}
-<div class="col-md-4">
-    {{wtf.quick_form(form)}}
-</div>
-<p>
-    <br />
-    Already have a account?
-    <a href="{{url_for('auth.login')}}">
-        Click here to Login
-    </a>
-</p>
-{% endblock %}
+    <script>
+        var var_no = 0;
+        var login_info = new Vue({
+            el: "#login",
+            data: {
+                username: "",
+                password: ""
+            },
+            methods: {
+                login: function () {
+                    var login_api = "/login";
+                    var password_md5 = CryptoJS.MD5(this.password).toString(CryptoJS.enc.Hex);
+                    console.log(password_md5);
+                }
+            }
+        });
+    </script>
+</html>

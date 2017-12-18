@@ -1,0 +1,85 @@
+.login-wallpaper {
+    height: 100%;
+    background-image: url('../image/(10).jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    background-attachment: fixed;
+}
+.register-wallpaper {
+    height: 100%;
+    background-image: url('../image/(6).jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    background-attachment: fixed; 
+}
+.logo {
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 30px;
+}
+.log-input {
+    height: 40px;
+}
+.reg-input {
+    height: 40px;
+}
+.btn-login {
+    display: block;
+    background-color: #25c6ff;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    height: 40px;
+    color: #fff;
+    font-weight: bold;
+}
+.btn-register {
+    display: block;
+    background-color: #25c6ff;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    height: 40px;
+    color: #fff;
+    font-weight: bold; 
+}
+.login-form {
+    animation: flash 1s ease-out 0.2s;
+    animation-fill-mode: backwards;
+    padding: 0 75px;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -250px;
+}
+.register-form {
+    animation: flash 1s ease-out 0.2s;
+    animation-fill-mode: backwards;
+    padding: 0 75px;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-left: -250px;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
