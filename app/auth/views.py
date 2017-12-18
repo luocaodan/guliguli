@@ -6,6 +6,10 @@ from ..email import send_email
 from .forms import LoginForm, RegistrationForm
 #from app import db
 
+@auth.route('/login', methods=['POST', 'GET'])
+def loginPage():
+    return render_template('auth/login.html')
+
 '''
 @auth.before_app_request
 def before_request():
