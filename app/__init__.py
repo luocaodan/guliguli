@@ -4,6 +4,7 @@ from flask_moment import Moment
 from flask_mail import Mail
 from config import config
 from flask_login import LoginManager
+import db
 
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_pymongo import PyMongo
@@ -12,6 +13,7 @@ bootstrap = Bootstrap()
 mail = Mail()
 moment = Moment()
 #db = SQLAlchemy()
+db.create_engine('root', '123456buaa', 'guliguli')
 #mongo = PyMongo()
 
 login_manager = LoginManager()
