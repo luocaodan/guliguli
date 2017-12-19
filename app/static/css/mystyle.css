@@ -29,6 +29,9 @@
 .reg-input {
     height: 40px;
 }
+.reg-label {
+    color: #FFF;
+}
 .btn-login {
     display: block;
     background-color: #25c6ff;
@@ -67,7 +70,7 @@
     width: 500px;
     height: 500px;
     position: absolute;
-    top: 30%;
+    top: 20%;
     left: 50%;
     margin-left: -250px;
 }
@@ -82,4 +85,107 @@
         opacity: 1;
         transform: translateY(0)
     }
+}
+
+.fist {
+
+}
+
+.second {
+    display: none;
+}
+
+.date_selector .select-box{
+    height: 40px;
+    display: inline-block;
+    position: relative;
+    background-color: #fff;
+    border: solid 1px #dfebf2;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.date_selector .select-box.year {
+    width: 150;
+    margin-right: 4px;
+}
+.date_selector .select-box.month{
+    width: 96;
+    margin-right: 4px;
+}
+.date_selector .select-box.day{
+    width: 88px;
+}
+.date_selector {
+    height: 40px;
+    margin: 8px 0;
+}
+.date_selector .select-box select {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 13px 0;
+    z-index: 1;
+}
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+.date_selector .select-box .display-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    font-size: 14px;
+    text-align: left;
+    color: #666;
+    border-radius: 4px;
+}
+
+.date_selector .select-box .display-box .selected-value {
+    margin: 10px 6px;
+    margin-right: 20px;
+    position: relative;
+    text-align: right;
+}
+
+.date_selector .select-box .display-box .selected-value::after {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 4px;
+    margin-left: 4px;
+    content: '';
+    background-image: url(../image/arrow.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sex {
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.left {
+    margin-left: 100px;
+    margin-right: 68px;
+    color: #fff;
+}
+
+.right {
+    margin-right: 100px;
+    color: #fff;
 }
