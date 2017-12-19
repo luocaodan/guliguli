@@ -123,28 +123,6 @@ def find_user(username):
         cursor = _db_ctx.connection.cursor()
         cursor.execute(sql)
         #if transaction
-        if cursor.description:
-            names = [x[0] for x in cursor.description]
-        r = cursor.fetchone()
-        if not r:
-            return None
-        return r
-    finally:
-        if cursor:
-            cursor.close()
-
-@with_connection
-def login_user(username, pwd):
-    global _db_ctx
-    cursor = None
-    sql = "call login_user('%s', '%s')" % (username, pwd)
-    logging.info('SQL: %s' % sql)
-    try:
-        cursor = _db_ctx.connection.cursor()
-        cursor.execute(sql)
-        #if transaction
-        if cursor.description:
-            names = [x[0] for x in cursor.description]
         r = cursor.fetchone()
         if not r:
             return None
@@ -163,8 +141,6 @@ def query_by_username(username):
         cursor = _db_ctx.connection.cursor()
         cursor.execute(sql)
         #if transaction
-        if cursor.description:
-            names = [x[0] for x in cursor.description]
         r = cursor.fetchone()
         if not r:
             return None
@@ -183,8 +159,6 @@ def query_by_userid(userid):
         cursor = _db_ctx.connection.cursor()
         cursor.execute(sql)
         #if transaction
-        if cursor.description:
-            names = [x[0] for x in cursor.description]
         r = cursor.fetchone()
         if not r:
             return None
@@ -212,9 +186,230 @@ def register_user(name, pwd, nick, photo, birth, reg_date, signa, fol, fan):
         if cursor:
             cursor.close()
 
+@with_connection
+def get_nworks(n):
+    global _db_ctx
+    cursor = None
+    sql = "call get_nworks('%s')" % n
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.fetchall()
+        if not r:
+            return None
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def get_nactivity(n):
+    global _db_ctx
+    cursor = None
+    sql = "call get_nactivity('%s')" % n
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.fetchall()
+        if not r:
+            return None
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def query_works(w_id):
+    global _db_ctx
+    cursor = None
+    sql = "call query_works('%s')" % w_id
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.fetchone()
+        if not r:
+            return None
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def query_comment(w_id):
+    global _db_ctx
+    cursor = None
+    sql = "call query_comment('%s')" % w_id
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.fetchall()
+        if not r:
+            return None
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def query_comment(w_id):
+    global _db_ctx
+    cursor = None
+    sql = "call query_comment('%s')" % w_id
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.fetchall()
+        if not r:
+            return None
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def insert_works(u_id, w_name, cont, img, d_post, p_id):
+    global _db_ctx
+    cursor = None
+    sql = "call insert_works(%s, '%s', '%s', '%s', '%s', '%s')" % (u_id, w_name, cont, img, d_post, p_id)
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.rowcount
+        if _db_ctx.transcations == 0:
+            logging.info('auto commit')
+            _db_ctx.connection.commit()
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def follow_user(uid1, uid2, d_follow):
+    global _db_ctx
+    cursor = None
+    sql = "call follow_user(%s, %s, '%s')" % (uid1, uid2, d_follow)
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.rowcount
+        if _db_ctx.transcations == 0:
+            logging.info('auto commit')
+            _db_ctx.connection.commit()
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def unfollow_user(uid1, uid2):
+    global _db_ctx
+    cursor = None
+    sql = "call unfollow_user(%s, %s)" % (uid1, uid2)
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.rowcount
+        if _db_ctx.transcations == 0:
+            logging.info('auto commit')
+            _db_ctx.connection.commit()
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def sign_ac(a_id, u_id, d_sign):
+    global _db_ctx
+    cursor = None
+    sql = "call sign_ac(%s, %s, '%s')" % (a_id, u_id, d_sign)
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.rowcount
+        if _db_ctx.transcations == 0:
+            logging.info('auto commit')
+            _db_ctx.connection.commit()
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def insert_comment(c_id, txt, w_id, u_id, d_post):
+    global _db_ctx
+    cursor = None
+    sql = "call sign_ac(%s, '%s', %s, %s, %s, '%s')" % (c_id, txt, w_id, u_id, d_post)
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.rowcount
+        if _db_ctx.transcations == 0:
+            logging.info('auto commit')
+            _db_ctx.connection.commit()
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def insert_activity(cont, d_release):
+    global _db_ctx
+    cursor = None
+    sql = "call sign_ac('%s', '%s')" % (cont, d_release)
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.rowcount
+        if _db_ctx.transcations == 0:
+            logging.info('auto commit')
+            _db_ctx.connection.commit()
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+@with_connection
+def insert_plate(intro):
+    global _db_ctx
+    cursor = None
+    sql = "call sign_ac('%s')" % (intro)
+    logging.info('SQL: %s' % sql)
+    try:
+        cursor = _db_ctx.connection.cursor()
+        cursor.execute(sql)
+        #if transaction
+        r = cursor.rowcount
+        if _db_ctx.transcations == 0:
+            logging.info('auto commit')
+            _db_ctx.connection.commit()
+        return r
+    finally:
+        if cursor:
+            cursor.close()
+
+
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
     create_engine('root', '123456buaa', 'guliguli')
-    a = login_user('123456@qq.com', '123456')
-    for i in a:
-        print i

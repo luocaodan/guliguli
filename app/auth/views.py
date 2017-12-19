@@ -11,6 +11,10 @@ import logging
 def loginPage():
     return render_template('auth/login.html')
 
+@auth.route('/register', methods=['POST', 'GET'])
+def registerPage():
+    return render_template('auth/register.html')
+
 @auth.route('/api/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -27,10 +31,6 @@ def login():
         return 2
         #return 'hello %s'%user.username
     return redirect(url_for('auth.loginPage'))
-
-@auth.route('/register', methods=['POST', 'GET'])
-def registerPage():
-    return render_template('auth/register.html')
 
 @auth.route('/api/register', methods=['POST', 'GET'])
 def register():
@@ -51,6 +51,23 @@ def register():
         #return 0
         return redirect(url_for('auth.login'))
     return redirect(url_for('auth.registerPage'))
+
+@auth.route('/api/login', methods=['POST', 'GET'])
+def isHasUser():
+    if request.method == 'POST':
+        username = request.form['username']
+        r = User.find_user(username)
+        #flash('Invalid username or password.')
+        return r
+        #return 'hello %s'%user.username
+    return redirect(url_for('auth.loginPage'))
+
+@auth.route('/api/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("You have been logged out!")
+    return redirect(url_for('main.home_page'))
 
 '''
 @auth.before_app_request
@@ -107,11 +124,3 @@ def confirm(token):
     else:
         flash('The confirmation link is invalid or has expried!')
     return redirect(url_for('main.index'))
-
-@auth.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    flash("You have been logged out!")
-    return redirect(url_for('main.index'))
-'''

@@ -23,6 +23,9 @@ class User(UserMixin):
         if pwd == self.password:
             return True
         return False
+    
+    def getFollows(self):
+        pass
 
     @staticmethod
     def queryByUsername(username):
@@ -40,7 +43,74 @@ class User(UserMixin):
     def registerUser(name, pwd, nick, photo, birth, reg_date, signa, fol, fan):
         r = db.register_user(name, pwd, nick, photo, birth, reg_date, signa, fol, fan)
         return r
+
+    @staticmethod
+    def find_user(name):
+        r = db.find_user(name)
+        if r[0] == 0:
+            return False
+        return True
+
+class Works():
+    def __init__(self, worksid, userid, works_name, content, image, date_post, palteid):
+        self.worksid = worksid
+        self.userid = userid
+        self.works_name = works_name
+        self.content = content
+        self.image = image
+        self.date_post = date_post
+        self.palteid = palteid
     
+    @staticmethod
+    def queryWorks(worksid):
+        pass
+    
+    @staticmethod
+    def insertWorks(u_id, w_name, cont, img, d_post, p_id):
+        pass
+    
+    @staticmethod
+    def get_nworks(n):
+        pass
+
+class Plate():
+    def __init__(self, plateid, introduction):
+        self.plateid = plateid
+        self.introduction = introduction
+    
+    def get_nworks(self, n):
+        pass
+    
+    @staticmethod
+    def queryPlate(palteid):
+        pass
+
+class Comment():
+    def __init__(self, commentid, text, worksid, userid, date_post):
+        self.commentid = commentid
+        self.text = text
+        self.worksid = worksid
+        self.userid = userid
+        self.date_post = date_post
+    
+    @staticmethod
+    def queryComment(commentid):
+        pass
+
+class Activity():
+    def __init__(self, activityid, content, date_release):
+        self.activityid = activityid
+        self.content = content
+        self.date_release = date_release
+    
+    def signActivity(self):
+        pass
+
+    @staticmethod
+    def queryActivity(commentid):
+        pass
+
+
 @login_manager.user_loader
 def load_user(userid):
     print "log user id = " + userid
