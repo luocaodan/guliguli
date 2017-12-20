@@ -9,8 +9,6 @@
     <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../static/css/bootstrap-theme.css" rel="stylesheet">
     <link href="../../static/css/mystyle.css" rel="stylesheet">
-    <link href="../../static/js/fileinput.min.js" rel="stylesheet">
-    <link href="../../static/css/fileinput.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,13 +19,13 @@
                 <form class="from-horizontal" role="form">
                     <div id="first">
                         <div class="form-group">
-                            <input type="text" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="username" placeholder="用户名">
+                            <input type="text" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="username" placeholder="用户名">
                         </div>
                         <div class="form-group">
-                            <input type="password" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="password" placeholder="密码" required>
+                            <input type="password" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="password" placeholder="密码" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="repassword" placeholder="确认密码" required>
+                            <input type="password" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="repassword" placeholder="确认密码" required>
                         </div>
                         <div class="form-group">
                             <button id="continue-second" type="button" class="btn-register" v-on:click="continueToSecond()">继续</button>
@@ -35,7 +33,7 @@
                     </div>
                     <div id="second" style="display:none;">
                         <div class="form-group">
-                            <input type="text" onkeydown="if(event.keyCode==13){$('#continue-third').click();return false;}" class="reg-input form-control" v-model="nickname" placeholder="昵称">
+                            <input type="text" v-on:focus="resetSubmit()" onkeydown="if(event.keyCode==13){$('#continue-third').click();return false;}" class="reg-input form-control" v-model="nickname" placeholder="昵称">
                         </div>
                         <div class="form-group">
                             <label class="form-label reg-label">生日</label>
@@ -43,7 +41,7 @@
                         <div class="form-group">
                             <div class="date_selector">
                                 <div class="select-box year">
-                                    <select id="yearVal" onchange="changeYear(this.value)">
+                                    <select id="yearVal" v-on:focus="resetSubmit()" onchange="changeYear(this.value)">
                                         <option value="">年</option>
                                         <option value="2017">2017</option>
                                         <option value="2016">2016</option>
@@ -149,7 +147,7 @@
                                     </div>
                                 </div>
                                 <div class="select-box month">
-                                    <select id="monthVal" onchange="changeMonth(this.value)">
+                                    <select id="monthVal" v-on:focus="resetSubmit()" onchange="changeMonth(this.value)">
                                         <option value="">月</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -169,7 +167,7 @@
                                     </div>
                                 </div>
                                 <div class="select-box day">
-                                    <select id="dayVal" onchange="changeDay(this.value)">
+                                    <select id="dayVal" v-on:focus="resetSubmit()" onchange="changeDay(this.value)">
                                         <option value="">日</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -214,23 +212,17 @@
                         </div>
                         <div class="sex">
                             <label class="radio-inline left">
-                                <input type="radio" name="sex" id="option1" value="male">男
+                                <input v-on:focus="resetSubmit()" type="radio" name="sex" id="option1" value="male">男
                             </label>
                             <label class="radio-inline right">
-                                <input type="radio" name="sex" id="option2" value="female">女
+                                <input v-on:focus="resetSubmit()" type="radio" name="sex" id="option2" value="female">女
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="text" onkeydown="if(event.keyCode==13){$('#continue-third').click();return false;}" class="form-control reg-input" v-model="signature" placeholder="签名">
+                            <input type="text" v-on:focus="resetSubmit()" onkeydown="if(event.keyCode==13){$('#continue-third').click();return false;}" class="form-control reg-input" v-model="signature" placeholder="签名">
                         </div>
                         <div class="form-group">
-                            <button id="continue-third" type="button" class="btn-register" v-on:click="continueToThird()">继续</button>
-                        </div>
-                    </div>
-                    <div id="third" style="display:none;">
-                        
-                        <div class="form-group">
-                            <button class="btn-register" type="submit" v-on:click="submit()">提交</button>
+                            <button id="continue-third" type="button" class="btn-register" v-on:click="submit()">提交</button>
                         </div>
                     </div>
                 </form>
@@ -268,6 +260,12 @@
 
         },
         methods: {
+            resetContinue: function() {
+                $("#continue-second").text("继续");
+            },
+            resetSubmit: function() {
+                $("#continue-third").text("提交");
+            },
             continueToSecond: function() {
                 if(this.username==="" || this.password==="" || this.repassword==="") {
                     $("#continue-second").text("用户名或密码不能为空");
@@ -277,10 +275,12 @@
                     $("#continue-second").text("两次填写密码不一致")
                     return;
                 }
+                // 检测用户是否存在
+
                 $("#first").hide();
                 $("#second").fadeIn(2000);
             },
-            continueToThird: function() {
+            submit: function() {
                 if(this.nickname === "") {
                     $("#continue-third").text("昵称不能为空");
                     return;
@@ -305,8 +305,7 @@
                     return;
                 }
                 
-                $("#second").hide();
-                $("#third").fadeIn(2000);
+                // submit
             }
         }
     });
