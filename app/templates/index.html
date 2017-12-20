@@ -4,28 +4,48 @@
     <meta charset="utf-8">
     <script src="../static/js/vue.js"></script>
     <script src="../static/js/md5.js"></script>
-    <script src="../static/js/jquery.min.js"></script>
-    <script href="../static/js/bootstrap.min.js"></script>
-    <link href="../static/css/mystyle.css" rel="stylesheet">
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
     <link href="../static/css/bootstrap-theme.css" rel="stylesheet">
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <link href="../static/css/mystyle.css" rel="stylesheet">
 </head>
 
 <body>
-    <div id="navigator">
-        <ul id="navList">
-            <li>
-                <a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a>
-            </li>
-            <li>
-                <a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>
-            </li>
-            <li>
-                <a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/luocaodan">联系</a>
-            </li>
-        </ul>
-    </div>
-
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div>
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <a href="#">首页</a>
+                    </li>
+                    <li>
+                            <a href="#">活动</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <img class="nav-photo" src="../static/image/no_photo.png">
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            设置
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">修改个人资料</a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="#">退出登录</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </body>
 
 </html>
