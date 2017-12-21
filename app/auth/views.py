@@ -9,10 +9,39 @@ import logging
 
 @auth.route('/login', methods=['POST', 'GET'])
 def loginPage():
+    if request.method == 'POST':
+        username = request.form['username']
+        pwd = request.form['password']
+        user = User.queryByUsername(username)
+        if user is None:
+            return 1
+        if user is not None and user.verify_password(pwd):
+            login_user(user, True)
+            return redirect(request.args.get('next') or url_for('main.home_page'))
+            #return 'hello %s'%user.username
+        #flash('Invalid username or password.')
+        return 2
+        #return 'hello %s'%user.username
     return render_template('auth/login.html')
 
 @auth.route('/register', methods=['POST', 'GET'])
 def registerPage():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        nickname = request.form['nickname']
+        profile_photo = request.form['profile_photo']
+        date_birth = request.form['date_birth']
+        date_register = request.form['date_register']
+        signature = request.form['signature']
+        follow = 0
+        fans = 0
+        r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans)
+        #print r
+        #return 'hello %s'%user.username
+        #flash('Invalid username or password.')
+        #return 0
+        return redirect(url_for('auth.login'))
     return render_template('auth/register.html')
 
 @auth.route('/api/login', methods=['POST', 'GET'])
