@@ -7,7 +7,7 @@ from . import login_manager
 
 
 class User(UserMixin):
-    def __init__(self, userid, username, password, nickname, profile_photo, date_brith, date_register, signature, follow, fans):
+    def __init__(self, userid, username, password, nickname, profile_photo, date_brith, date_register, signature, follow, fans, sex):
         self.id = userid
         self.username = username
         self.password = password
@@ -18,6 +18,7 @@ class User(UserMixin):
         self.signature = signature
         self.follow = follow
         self.fans = fans
+        self.sex = sex
 
     def verify_password(self, pwd):
         if pwd == self.password:
@@ -31,17 +32,17 @@ class User(UserMixin):
     def queryByUsername(username):
         r =  db.query_by_username(username)
         #print r
-        return User(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[6], r[7], r[8])
+        return User(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[6], r[7], r[8], r[9])
 
     @staticmethod
     def queryByUserid(userid):
         r =  db.query_by_userid(userid)
         #print r
-        return User(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[6], r[7], r[8])
+        return User(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[6], r[7], r[8], r[9])
 
     @staticmethod
     def registerUser(name, pwd, nick, photo, birth, reg_date, signa, fol, fan):
-        r = db.register_user(name, pwd, nick, photo, birth, reg_date, signa, fol, fan)
+        r = db.register_user(name, pwd, nick, photo, birth, reg_date, signa, fol, fan, sex)
         return r
 
     @staticmethod

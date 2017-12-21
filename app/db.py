@@ -168,10 +168,10 @@ def query_by_userid(userid):
             cursor.close()
 
 @with_connection
-def register_user(name, pwd, nick, photo, birth, reg_date, signa, fol, fan):
+def register_user(name, pwd, nick, photo, birth, reg_date, signa, fol, fan, sex):
     global _db_ctx
     cursor = None
-    sql = "call register_user('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (name, pwd, nick, photo, birth, reg_date, signa, fol, fan)
+    sql = "call register_user('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (name, pwd, nick, photo, birth, reg_date, signa, fol, fan, sex)
     logging.info('SQL: %s' % sql)
     try:
         cursor = _db_ctx.connection.cursor()
