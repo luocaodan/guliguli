@@ -124,3 +124,4 @@ def confirm(token):
     else:
         flash('The confirmation link is invalid or has expried!')
     return redirect(url_for('main.index'))
+'''
