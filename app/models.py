@@ -21,6 +21,8 @@ class User(UserMixin):
         self.sex = sex
 
     def verifyPassword(self, pwd):
+        print pwd
+        print self.password
         if pwd == self.password:
             return True
         return False

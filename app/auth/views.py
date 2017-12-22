@@ -16,18 +16,19 @@ def login():
         pwd = request.form['password']
         user = User.queryByUsername(username)
         if user is None:
-            resp = make_response('1', 200)
-            return resp
+            #resp = make_response('1', 200)
+            #render_template('auth/login.html')
+            return render_template('auth/login.html', error = 1)
         if user is not None and user.verifyPassword(pwd):
             login_user(user, True)
             print "login: " + username
             return redirect(request.args.get('next') or url_for('main.home_page'))
             #return 'hello %s'%user.username
         #flash('Invalid username or password.')
-        resp = make_response('2', 200)
-        return resp
+        #resp = make_response('2', 200)
+        return render_template('auth/login.html', error = 2)
         #return 'hello %s'%user.username
-    return render_template('auth/login.html')
+    return render_template('auth/login.html', error = 0)
 
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
@@ -42,7 +43,7 @@ def register():
         sex = request.form['sex']
         follow = 0
         fans = 0
-        if User.queryByUsername(username) is None:
+        if User.queryByUsername(username) is not None:
             resp = make_response('1', 200)
             return resp
         r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans, sex)
