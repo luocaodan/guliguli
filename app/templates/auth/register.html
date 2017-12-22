@@ -24,7 +24,7 @@
                             <input type="text" name="username" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="username" placeholder="用户名">
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="password" placeholder="密码" required>
+                            <input type="password" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="password" placeholder="密码" required>
                         </div>
                         <div class="form-group">
                             <input type="password" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="repassword" placeholder="确认密码" required>
@@ -226,6 +226,7 @@
                         <div class="form-group">
                             <button id="continue-third" type="button" class="btn-register" v-on:click="submit()">提交</button>
                         </div>
+                        <input type="text" name="password" id="password" style="display:none">
                         <input type="text" name="profile_photo" value="" style="display:none;">
                         <input id="date_birth" type="text" name="date_birth" style="display:none">
                         <input id="date_register" type="text" name="date_register" style="display:none">
@@ -284,9 +285,9 @@
                     return;
                 }
                 // 检测用户是否存在
-                $.post("/api/HasUser", {"username": this.username}, function(data) {
+                $.post("/auth/api/isHasUser", {"username": this.username}, function(data) {
                     console.log(data);
-                });
+                }, "text");
                 $("#first").hide();
                 $("#second").fadeIn(2000);
             },
@@ -316,6 +317,8 @@
                 }
 
                 $("#date_birth").val(this.date_birth);
+                var password_md5 = CryptoJS.MD5(this.password).toString(CryptoJS.enc.Hex);
+                $("#password").val(password_md5);
                 var mydate = new Date();
                 $("#date_register").val(mydate.toLocaleDateString());
                 // submit
