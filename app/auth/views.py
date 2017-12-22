@@ -39,6 +39,8 @@ def registerPage():
         sex = request.form['sex']
         follow = 0
         fans = 0
+        if User.queryByUsername(username) is None:
+            return 500
         r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans, sex)
         print "register user: " + str(r)
         #return 'hello %s'%user.username
@@ -93,7 +95,10 @@ def isHasUser():
         username = request.form['username']
         r = User.find_user(username)
         #flash('Invalid username or password.')
-        return r
+        if r > 0:
+            return 500
+        else:
+             return 0
         #return 'hello %s'%user.username
     return redirect(url_for('auth.loginPage'))
 
