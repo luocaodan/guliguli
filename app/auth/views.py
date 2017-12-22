@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, url_for, flash
+from flask import render_template, redirect, request, url_for, flash, make_response
 from flask_login import login_user, login_required, logout_user, current_user
 from . import auth
 from ..models import User
@@ -6,6 +6,7 @@ from ..email import send_email
 from .forms import LoginForm, RegistrationForm
 from app import db
 import logging
+
 
 @auth.route('/login', methods=['POST', 'GET'])
 def loginPage():
@@ -40,7 +41,9 @@ def registerPage():
         follow = 0
         fans = 0
         if User.queryByUsername(username) is None:
-            return 500
+            resp = make_response("response", 500)
+            resp.headers['error'] = 'username duplicate'
+            return resp
         r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans, sex)
         print "register user: " + str(r)
         #return 'hello %s'%user.username
@@ -96,9 +99,13 @@ def isHasUser():
         r = User.find_user(username)
         #flash('Invalid username or password.')
         if r > 0:
-            return 500
+            resp = make_response("response", 500)
+            resp.headers['error'] = 'username duplicate'
+            return resp
         else:
-             return 0
+            resp = make_response("response", 200)
+            resp.headers['error'] = ''
+            return resp
         #return 'hello %s'%user.username
     return redirect(url_for('auth.loginPage'))
 
