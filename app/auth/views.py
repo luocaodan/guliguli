@@ -17,6 +17,7 @@ def loginPage():
             return 1
         if user is not None and user.verify_password(pwd):
             login_user(user, True)
+            print "login: " + username
             return redirect(request.args.get('next') or url_for('main.home_page'))
             #return 'hello %s'%user.username
         #flash('Invalid username or password.')
@@ -34,10 +35,11 @@ def registerPage():
         date_birth = request.form['date_birth']
         date_register = request.form['date_register']
         signature = request.form['signature']
+        sex = request.form['sex']
         follow = 0
         fans = 0
-        r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans)
-        #print r
+        r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans, sex)
+        print "register user: " + str(r)
         #return 'hello %s'%user.username
         #flash('Invalid username or password.')
         #return 0
@@ -71,9 +73,10 @@ def register():
         date_birth = request.form['date_birth']
         date_register = request.form['date_register']
         signature = request.form['signature']
+        sex = request.form['sex']
         follow = 0
         fans = 0
-        r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans)
+        r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans, sex)
         #print r
         #return 'hello %s'%user.username
         #flash('Invalid username or password.')
@@ -95,7 +98,7 @@ def isHasUser():
 @login_required
 def logout():
     logout_user()
-    flash("You have been logged out!")
+    print "logout user"
     return redirect(url_for('main.home_page'))
 
 '''
