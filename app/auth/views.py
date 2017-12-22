@@ -9,13 +9,14 @@ import logging
 
 @auth.route('/login', methods=['POST', 'GET'])
 def loginPage():
+    #form = LoginForm()
     if request.method == 'POST':
         username = request.form['username']
         pwd = request.form['password']
         user = User.queryByUsername(username)
         if user is None:
             return 1
-        if user is not None and user.verify_password(pwd):
+        if user is not None and user.verifyPassword(pwd):
             login_user(user, True)
             print "login: " + username
             return redirect(request.args.get('next') or url_for('main.home_page'))
@@ -54,12 +55,12 @@ def login():
         user = User.queryByUsername(username)
         if user is None:
             return 1
-        if user is not None and user.verify_password(pwd):
+        if user is not None and user.verifyPassword(pwd):
             login_user(user, True)
             return redirect(request.args.get('next') or url_for('main.home_page'))
             #return 'hello %s'%user.username
         #flash('Invalid username or password.')
-        return 2
+        return 0
         #return 'hello %s'%user.username
     return redirect(url_for('auth.loginPage'))
 
@@ -76,15 +77,17 @@ def register():
         sex = request.form['sex']
         follow = 0
         fans = 0
+        if User.queryByUsername(username) is None:
+            return 500
         r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans, sex)
         #print r
         #return 'hello %s'%user.username
         #flash('Invalid username or password.')
         #return 0
-        return redirect(url_for('auth.login'))
+        return 0
     return redirect(url_for('auth.registerPage'))
 
-@auth.route('/api/login', methods=['POST', 'GET'])
+@auth.route('/api/isHasUser', methods=['POST', 'GET'])
 def isHasUser():
     if request.method == 'POST':
         username = request.form['username']

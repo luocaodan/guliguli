@@ -20,7 +20,7 @@ class User(UserMixin):
         self.fans = fans
         self.sex = sex
 
-    def verify_password(self, pwd):
+    def verifyPassword(self, pwd):
         if pwd == self.password:
             return True
         return False
