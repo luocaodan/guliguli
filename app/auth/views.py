@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import render_template, redirect, request, url_for, flash, make_response
 from flask_login import login_user, login_required, logout_user, current_user
 from . import auth
@@ -18,7 +19,7 @@ def login():
         if user is None:
             #resp = make_response('1', 200)
             #render_template('auth/login.html')
-            return render_template('auth/login.html', error = u'用户不存在')
+            return render_template('auth/login.html', error = '用户不存在')
         if user is not None and user.verifyPassword(pwd):
             login_user(user, True)
             print "login: " + username
@@ -26,7 +27,28 @@ def login():
             #return 'hello %s'%user.username
         #flash('Invalid username or password.')
         #resp = make_response('2', 200)
-        return render_template('auth/login.html', error = u'用户密码错误')
+        return render_template('auth/login.html', error = '用户密码错误')
+        #return 'hello %s'%user.username
+    return render_template('auth/login.html', error = '')
+
+@auth.route('/api/login', methods=['POST', 'GET'])
+def apiLogin():
+    #form = LoginForm()
+    if request.method == 'POST':
+        username = request.form['username']
+        pwd = request.form['password']
+        user = User.queryByUsername(username)
+        if user is None:
+            return make_response('1', 200)
+        if user is not None and user.verifyPassword(pwd):
+            login_user(user, True)
+            print "login: " + username
+            #return redirect(request.args.get('next') or url_for('main.home_page'))
+            return make_response('0', 200)
+            #return 'hello %s'%user.username
+        #flash('Invalid username or password.')
+        resp = make_response('2', 200)
+        return resp
         #return 'hello %s'%user.username
     return render_template('auth/login.html', error = '')
 
