@@ -9,67 +9,27 @@ import logging
 
 
 @auth.route('/login', methods=['POST', 'GET'])
-def loginPage():
+def login():
     #form = LoginForm()
     if request.method == 'POST':
         username = request.form['username']
         pwd = request.form['password']
         user = User.queryByUsername(username)
         if user is None:
-            return 1
+            resp = make_response('1', 200)
+            return resp
         if user is not None and user.verifyPassword(pwd):
             login_user(user, True)
             print "login: " + username
             return redirect(request.args.get('next') or url_for('main.home_page'))
             #return 'hello %s'%user.username
         #flash('Invalid username or password.')
-        return 2
+        resp = make_response('2', 200)
+        return resp
         #return 'hello %s'%user.username
     return render_template('auth/login.html')
 
 @auth.route('/register', methods=['POST', 'GET'])
-def registerPage():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        nickname = request.form['nickname']
-        profile_photo = request.form['profile_photo']
-        date_birth = request.form['date_birth']
-        date_register = request.form['date_register']
-        signature = request.form['signature']
-        sex = request.form['sex']
-        follow = 0
-        fans = 0
-        if User.queryByUsername(username) is None:
-            resp = make_response("response", 500)
-            resp.headers['error'] = 'username duplicate'
-            return resp
-        r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans, sex)
-        print "register user: " + str(r)
-        #return 'hello %s'%user.username
-        #flash('Invalid username or password.')
-        #return 0
-        return redirect(url_for('auth.login'))
-    return render_template('auth/register.html')
-
-@auth.route('/api/login', methods=['POST', 'GET'])
-def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        pwd = request.form['password']
-        user = User.queryByUsername(username)
-        if user is None:
-            return 1
-        if user is not None and user.verifyPassword(pwd):
-            login_user(user, True)
-            return redirect(request.args.get('next') or url_for('main.home_page'))
-            #return 'hello %s'%user.username
-        #flash('Invalid username or password.')
-        return 0
-        #return 'hello %s'%user.username
-    return redirect(url_for('auth.loginPage'))
-
-@auth.route('/api/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
         username = request.form['username']
@@ -83,14 +43,15 @@ def register():
         follow = 0
         fans = 0
         if User.queryByUsername(username) is None:
-            return 500
+            resp = make_response('1', 200)
+            return resp
         r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans, sex)
-        #print r
+        print "register user: " + str(r)
         #return 'hello %s'%user.username
         #flash('Invalid username or password.')
         #return 0
-        return 0
-    return redirect(url_for('auth.registerPage'))
+        return redirect(url_for('auth.login'))
+    return render_template('auth/register.html')
 
 @auth.route('/api/isHasUser', methods=['POST', 'GET'])
 def isHasUser():
@@ -99,10 +60,10 @@ def isHasUser():
         r = User.find_user(username)
         #flash('Invalid username or password.')
         if r > 0:
-            resp = make_response(1, 200)
+            resp = make_response('1', 200)
             return resp
         else:
-            resp = make_response(0, 200)
+            resp = make_response('0', 200)
             return resp
         #return 'hello %s'%user.username
     return redirect(url_for('auth.loginPage'))
