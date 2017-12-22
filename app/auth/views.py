@@ -99,12 +99,10 @@ def isHasUser():
         r = User.find_user(username)
         #flash('Invalid username or password.')
         if r > 0:
-            resp = make_response("response", 500)
-            resp.headers['error'] = 'username duplicate'
+            resp = make_response("username duplicate", 1)
             return resp
         else:
-            resp = make_response("response", 200)
-            resp.headers['error'] = ''
+            resp = make_response("username duplicate", 1)
             return resp
         #return 'hello %s'%user.username
     return redirect(url_for('auth.loginPage'))
