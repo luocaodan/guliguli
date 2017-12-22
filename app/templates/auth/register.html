@@ -286,10 +286,17 @@
                 }
                 // 检测用户是否存在
                 $.post("/auth/api/isHasUser", {"username": this.username}, function(data) {
-                    console.log(data);
+                    if(parseInt(data) === 1) {
+                        $("#continue-second").text("用户名已存在");
+                        return;
+                    }
+                    else {
+                        $("#first").hide();
+                        $("#second").fadeIn(2000);
+                        return;
+                    }
                 }, "text");
-                $("#first").hide();
-                $("#second").fadeIn(2000);
+                
             },
             submit: function() {
                 if(this.nickname === "") {
