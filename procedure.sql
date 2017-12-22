@@ -3,16 +3,6 @@
 */
 use guliguli;
 delimiter //  -- 改变分隔符
-/*
-    login_user (传入用户名密码)
-    验证用户名密码是否正确
-*/
-create procedure login_user(name varchar(16), pwd char(32))
-    begin
-        select nickname, profile_photo from users 
-        where username=name and password=pwd;
-    end//
-
 
 /*
     query_by_username (传入用户名)

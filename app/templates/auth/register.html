@@ -18,13 +18,13 @@
         <div class="content">
             <div id="register" class="register-form">
                 <img class="logo" src="../../static/image/logo.png">
-                <form class="from-horizontal" role="form">
+                <form class="from-horizontal" role="form" method="post">
                     <div id="first">
                         <div class="form-group">
-                            <input type="text" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="username" placeholder="用户名">
+                            <input type="text" name="username" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="username" placeholder="用户名">
                         </div>
                         <div class="form-group">
-                            <input type="password" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="password" placeholder="密码" required>
+                            <input type="password" name="password" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="password" placeholder="密码" required>
                         </div>
                         <div class="form-group">
                             <input type="password" v-on:focus="resetContinue()" onkeydown="if(event.keyCode==13){$('#continue-second').click();return false;}" class="form-control reg-input" v-model="repassword" placeholder="确认密码" required>
@@ -35,7 +35,7 @@
                     </div>
                     <div id="second" style="display:none;">
                         <div class="form-group">
-                            <input type="text" v-on:focus="resetSubmit()" onkeydown="if(event.keyCode==13){$('#continue-third').click();return false;}" class="reg-input form-control" v-model="nickname" placeholder="昵称">
+                            <input type="text" name="nickname" v-on:focus="resetSubmit()" onkeydown="if(event.keyCode==13){$('#continue-third').click();return false;}" class="reg-input form-control" v-model="nickname" placeholder="昵称">
                         </div>
                         <div class="form-group">
                             <label class="form-label reg-label">生日</label>
@@ -169,7 +169,7 @@
                                     </div>
                                 </div>
                                 <div class="select-box day">
-                                    <select id="dayVal" v-on:focus="resetSubmit()" onchange="changeDay(this.value)">
+                                    <select id="dayVal" v-on:focus="resetSubmit()"  onchange="changeDay(this.value)">
                                         <option value="">日</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -221,10 +221,16 @@
                             </label>
                         </div>
                         <div class="form-group">
-                            <input type="text" v-on:focus="resetSubmit()" onkeydown="if(event.keyCode==13){$('#continue-third').click();return false;}" class="form-control reg-input" v-model="signature" placeholder="签名">
+                            <input type="text" v-on:focus="resetSubmit()" name="signature" onkeydown="if(event.keyCode==13){$('#continue-third').click();return false;}" class="form-control reg-input" v-model="signature" placeholder="签名">
                         </div>
                         <div class="form-group">
                             <button id="continue-third" type="button" class="btn-register" v-on:click="submit()">提交</button>
+                        </div>
+                        <input type="text" name="profile_photo" value="" style="display:none;">
+                        <input id="date_birth" type="text" name="date_birth" style="display:none">
+                        <input id="date_register" type="text" name="date_register" style="display:none">
+                        <div style="display:none">
+                            <button id="submit" type="submit"></button>
                         </div>
                     </div>
                 </form>
@@ -278,7 +284,9 @@
                     return;
                 }
                 // 检测用户是否存在
-
+                $.post("/api/HasUser", {"username": this.username}, function(data) {
+                    console.log(data);
+                });
                 $("#first").hide();
                 $("#second").fadeIn(2000);
             },
@@ -306,8 +314,12 @@
                     $("#continue-third").text("签名不能为空");
                     return;
                 }
-                
+
+                $("#date_birth").val(this.date_birth);
+                var mydate = new Date();
+                $("#date_register").val(mydate.toLocaleDateString());
                 // submit
+                $("#submit").click(); 
             }
         }
     });
