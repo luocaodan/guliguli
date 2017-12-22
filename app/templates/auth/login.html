@@ -18,17 +18,18 @@
             <div class="content">
                 <div id="login" class="login-form">
                     <img class="logo" src="../../static/image/logo.png">
-                    <form class="from-horizontal" role="form" v-on:submit="login" method="post">
+                    <form class="from-horizontal" role="form" method="post">
                         <div class="form-group">
-                            <input type="text" class="form-control log-input" name="username" v-model="username" placeholder="用户名" required>
+                            <input id="username" type="text" class="form-control log-input" v-on:focus="resetInfo" name="username" v-model="username" placeholder="用户名" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control log-input" v-model="password" placeholder="密码" required> 
+                            <input id="raw-pwd" type="password" class="form-control log-input" v-on:focus="resetInfo" v-model="password" placeholder="密码" required> 
                         </div>
                         <input id="password" type="text" name="password" style="display:none;">
                         <div class="form-group">
-                            <button type="submit" class="btn-login">登录</button>
+                            <button id="info" type="button" class="btn-login" v-on:click="login()">登录</button>
                         </div>
+                        <button type="submit" id="submit" style="display:none"></button>
                     </form>
                 </div>
             </div>
@@ -47,9 +48,38 @@
                 password: ""
             },
             methods: {
+                resetInfo: function() {
+                    $("#info").text("登录");
+                },
                 login: function () {
                     var password_md5 = CryptoJS.MD5(this.password).toString(CryptoJS.enc.Hex);
                     $("#password").val(password_md5);
+                    // 检查用户名密码是否为空
+                    if($("#username").val() == "") {
+                        $("#info").text("用户名不能为空");
+                        return;
+                    }
+                    if($("#raw-pwd").val() == "") {
+                        $("#info").text("密码不能为空");
+                        return;
+                    }
+                    // ajax提交
+                    $.post("/auth/api/login", {
+                        "username": this.username,
+                        "password": password_md5
+                    }, function(data) {
+                        if(data == "1") {
+                            $("#info").text("用户名不存在");
+                            return;
+                        }
+                        else if(data == "2") {
+                            $("#info").text("密码错误");
+                        }
+                        else {
+                            $("#submit").click();
+                        }
+                        console.log(data);
+                    }, "text");
                 }
             }
         });
