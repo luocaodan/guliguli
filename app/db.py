@@ -411,5 +411,5 @@ def insert_plate(intro):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
+    #logging.basicConfig(level=logging.DEBUG)
     create_engine('root', '123456buaa', 'guliguli')

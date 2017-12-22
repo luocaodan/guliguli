@@ -6,6 +6,10 @@ from config import config
 from flask_login import LoginManager
 import db
 
+import logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.DEBUG)
+
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_pymongo import PyMongo
 
