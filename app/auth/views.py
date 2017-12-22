@@ -19,7 +19,7 @@ def login():
         if user is None:
             #resp = make_response('1', 200)
             #render_template('auth/login.html')
-            return render_template('auth/login.html', error = '用户不存在')
+            return render_template('auth/login.html')
         if user is not None and user.verifyPassword(pwd):
             login_user(user, True)
             print "login: " + username
@@ -27,9 +27,9 @@ def login():
             #return 'hello %s'%user.username
         #flash('Invalid username or password.')
         #resp = make_response('2', 200)
-        return render_template('auth/login.html', error = '用户密码错误')
+        return render_template('auth/login.html')
         #return 'hello %s'%user.username
-    return render_template('auth/login.html', error = '')
+    return render_template('auth/login.html')
 
 @auth.route('/api/login', methods=['POST', 'GET'])
 def apiLogin():
