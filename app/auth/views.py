@@ -18,7 +18,7 @@ def login():
         if user is None:
             #resp = make_response('1', 200)
             #render_template('auth/login.html')
-            return render_template('auth/login.html', error = 1)
+            return render_template('auth/login.html', error = u'用户不存在')
         if user is not None and user.verifyPassword(pwd):
             login_user(user, True)
             print "login: " + username
@@ -26,9 +26,9 @@ def login():
             #return 'hello %s'%user.username
         #flash('Invalid username or password.')
         #resp = make_response('2', 200)
-        return render_template('auth/login.html', error = 2)
+        return render_template('auth/login.html', error = u'用户密码错误')
         #return 'hello %s'%user.username
-    return render_template('auth/login.html', error = 0)
+    return render_template('auth/login.html', error = '')
 
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
