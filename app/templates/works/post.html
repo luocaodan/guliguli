@@ -1,10 +1,28 @@
-{% extends "base.html" %}
-
-{% block head %}
+{% extends "base.html" %} 
+{% block head %} 
 {{ super() }}
 <script src="/static/js/dropzone.js"></script>
-{% block title %}上传作品{% endblock %}
+<link href="/static/css/dropzone.css" rel="stylesheet">
+{% endblock %} 
+
+{% block title %}
+上传作品
+{% endblock %} 
+
 {% block content %}
-<form class="dropzone" id="my-awesome-dropzone"></form>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form class="dropzone" action="/works/post" id="my-awesome-dropzone">
+            <div class="form-group">
+                <input type="text" name="workName" class="form-control" placeholder="作品名">
+            </div>
+            <div class="form-group">
+                <button type="submit" >提交</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
 
 {% endblock %}
