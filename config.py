@@ -1,6 +1,7 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-staicdir = os.path.join(basedir, 'static')
+appdir = os.path.join(basedir, 'app')
+staicdir = os.path.join(appdir, 'static')
 uploadir = os.path.join(staicdir, 'uploads')
 thudir = os.path.join(uploadir, 'thumbnail')
 

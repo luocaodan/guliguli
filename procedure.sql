@@ -124,7 +124,7 @@ create procedure insert_works(
     begin
         insert into
         works(userid, works_name, content, image, date_post, plateid)
-        values(u_id, w_name, cont, img, d_post, p_id)
+        values(u_id, w_name, cont, img, d_post, p_id);
     end//
 
 /*

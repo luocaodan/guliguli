@@ -70,15 +70,24 @@ class Works():
     
     @staticmethod
     def queryWorks(worksid):
-        pass
+        r = db.query_works(worksid)
+        if r is None:
+            return None
+        return Works(r[0], r[1], r[2], r[3], r[4], r[5], r[7])
     
     @staticmethod
     def insertWorks(u_id, w_name, cont, img, d_post, p_id):
-        pass
+        print 'models inster works'
+        r = db.insert_works(u_id, w_name, cont, img, d_post, p_id)
+        return r
     
     @staticmethod
     def get_nworks(n):
-        pass
+        res = []
+        cur = db.get_nworks(n)
+        for r in cur:
+            res.append(Works(r[0], r[1], r[2], r[3], r[4], r[5], r[7]))
+        return res
 
 class Plate():
     def __init__(self, plateid, introduction):
