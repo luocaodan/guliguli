@@ -53,4 +53,4 @@ def post():
             filename = photos.save(request.files['photo'])
             create_thumbnail(filename)
             return photos.url(filename)
-    render_template('works/post.html')
+    return render_template('works/post.html')
