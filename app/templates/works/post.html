@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<script src="/static/js/dropzone.js"></script>
+{% block title %}上传作品{% endblock %}
+{% block content %}
+<form class="dropzone" id="my-awesome-dropzone"></form>
+
+{% endblock %}
