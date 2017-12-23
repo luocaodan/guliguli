@@ -246,3 +246,13 @@ option {
     border-radius: 100%;
     padding: 5px 10px;
 }
+
+
+
+/* 上传作品部分 覆盖dropzone.css */
+.dz-preview {
+}
+
+.dz-error-message {
+    display: none !important;
+}

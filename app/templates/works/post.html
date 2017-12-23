@@ -1,28 +1,63 @@
 {% extends "base.html" %} 
 {% block head %} 
+<link href="/static/css/dropzone.css" rel="stylesheet"> 
 {{ super() }}
 <script src="/static/js/dropzone.js"></script>
-<link href="/static/css/dropzone.css" rel="stylesheet">
-{% endblock %} 
 
-{% block title %}
-上传作品
 {% endblock %} 
-
+{% block title %} 
+上传作品 
+{% endblock %} 
 {% block content %}
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <form class="dropzone" action="/works/post" id="my-awesome-dropzone">
+        <form id="post" class="form-horizontal" role="form">
             <div class="form-group">
-                <input type="text" name="workName" class="form-control" placeholder="作品名">
+                <input type="text" name="workName" v-model="postName" class="form-control" v-on:focus="resetInfo()" placeholder="作品名">
             </div>
             <div class="form-group">
-                <button type="submit" >提交</button>
+                <div class="dropzone" action="/works/post" id="imgList" v-on:click="resetInfo()">
+                </div>
             </div>
+            <div class="form-group">
+                <button id="info" type="button" class="btn-register" v-on:click="submit">提交</button>
+            </div>
+            <input id="img" type="text" name="img" style="display:none">
         </form>
     </div>
     <div class="col-md-4"></div>
 </div>
+<script>
+    var img_arr = [];
+    Dropzone.options.imgList = {
+        success: function(file, response, e) {
+            img_arr.push(response);
+        }
+    }
 
+    var post_info = new Vue({
+        el: "#post",
+        data: {
+            postName: ""
+        },
+        methods: {
+            resetInfo: function() {
+                $("#info").text("提交");
+            },
+            submit: function() {
+                if(this.postName == "") {
+                    $("#info").text("请填写作品名");
+                    return;
+                }
+                if(img_arr.length === 0) {
+                    $("#info").text("请上传作品");
+                    return;
+                }
+                $("#img").val(JSON.stringify(img_arr));
+                $("form").submit();
+            }
+        }
+    });
+</script>
 {% endblock %}
