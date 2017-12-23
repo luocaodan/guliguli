@@ -1,5 +1,8 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
+staicdir = os.path.join(basedir, 'static')
+uploadir = os.path.join(staicdir, 'uploads')
+thudir = os.path.join(uploadir, 'thumbnail')
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
@@ -8,8 +11,8 @@ class Config:
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = 'Flasky admin <malxi@null.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN') or '@qq.com'
-    UPLOADED_PHOTOS_DEST = os.path.join(basedir, '/static/uploads/')
-    THUMBNAIL_FOLDER = os.path.join(basedir, '/static/uploads/thumbnail/')
+    UPLOADED_PHOTOS_DEST = uploadir
+    THUMBNAIL_FOLDER = thudir
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'bmp'])
     HOST = '0.0.0.0'
     PORT = 80

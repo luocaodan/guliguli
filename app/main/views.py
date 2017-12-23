@@ -13,4 +13,4 @@ import datetime
 
 @main.route('/')
 def home_page():
-    return render_template('root.html', user=current_user)
+    return render_template('index.html', user=current_user)

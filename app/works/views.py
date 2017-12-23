@@ -30,6 +30,7 @@ def create_thumbnail(image):
     try:
         base_width = 80
         img = Image.open(os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'], image))
+        print os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'], image)
         w_percent = (base_width / float(img.size[0]))
         h_size = int((float(img.size[1]) * float(w_percent)))
         img = img.resize((base_width, h_size), PIL.Image.ANTIALIAS)
@@ -50,7 +51,7 @@ def worksPage():
 def post():
     if request.method == 'POST':
         if 'file' in request.files:
-            filename = photos.save(request.files['photo'])
+            filename = photos.save(request.files['file'])
             create_thumbnail(filename)
             return photos.url(filename)
     return render_template('works/post.html')
