@@ -8,8 +8,9 @@ class Config:
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = 'Flasky admin <malxi@null.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN') or '@qq.com'
-    UPLOAD_FOLDER = '/path/to/the/uploads'
-    ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+    UPLOADED_PHOTOS_DEST = os.path.join(basedir, '/static/uploads/')
+    THUMBNAIL_FOLDER = os.path.join(basedir, '/static/uploads/thumbnail/')
+    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'bmp'])
     HOST = '0.0.0.0'
     PORT = 80
     
