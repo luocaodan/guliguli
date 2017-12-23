@@ -226,7 +226,7 @@ def get_nactivity(n):
 def query_works(w_id):
     global _db_ctx
     cursor = None
-    sql = "call query_works('%s')" % w_id
+    sql = "call query_works(%s)" % w_id
     logging.info('SQL: %s' % sql)
     try:
         cursor = _db_ctx.connection.cursor()

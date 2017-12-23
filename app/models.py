@@ -4,6 +4,7 @@ from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
 from . import login_manager
+import json
 
 
 class User(UserMixin):
@@ -70,10 +71,11 @@ class Works():
     
     @staticmethod
     def queryWorks(worksid):
+        print 'queryWokrs %s' % worksid
         r = db.query_works(worksid)
         if r is None:
             return None
-        return Works(r[0], r[1], r[2], r[3], r[4], r[5], r[7])
+        return Works(r[0], r[1], r[2], r[3] , r[4], r[5], r[6])
     
     @staticmethod
     def insertWorks(u_id, w_name, cont, img, d_post, p_id):
