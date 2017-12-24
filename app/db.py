@@ -118,6 +118,7 @@ def create_engine(user, passwd, db='guliguli', host='127.0.0.1', port=3306, **kw
 @with_connection
 def runQuerySql(tmplate, parameters, num):
     for k, v in parameters.iteritems():
+        parameters[k] = str(parameters[k])
         parameters[k] = parameters[k].replace("'","\\\'")
         parameters[k] = parameters[k].replace("\"","\\\"")
     sql = tmplate.format(**parameters)
@@ -128,7 +129,7 @@ def runQuerySql(tmplate, parameters, num):
         cursor = _db_ctx.connection.cursor()
         cursor.execute(sql)
         #if transaction
-        if num == 1:
+        if num <= 1:
             r = cursor.fetchone()
         else:
             r = cursor.fetchall()
@@ -142,6 +143,7 @@ def runQuerySql(tmplate, parameters, num):
 @with_connection
 def runInsertSql(tmplate, parameters):
     for k, v in parameters.iteritems():
+        parameters[k] = str(parameters[k])
         parameters[k] = parameters[k].replace("'","\\\'")
         parameters[k] = parameters[k].replace("\"","\\\"")
     sql = tmplate.format(**parameters)

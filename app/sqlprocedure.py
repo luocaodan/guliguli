@@ -5,8 +5,15 @@ t_query_countuser_username = "call query_countuser_username('{name}')"
 
 t_insert_user = "call insert_user('{name}', '{pwd}', '{nick}', '{photo}', '{birth}', '{reg_date}', '{signa}', {fol}, {fan}, '{sex}')"
 
-t_update_follow_user = "call update_follow_user({uid1}, {uid2}, '{d_follow}')"
-t_update_unfollow_user = "call update_unfollow_user({uid1}, {uid2})"
+t_update_user = "call update_user('{id}', '{pwd}', '{nick}', '{photo}', '{birth}', '{reg_date}', '{signa}', {fol}, {fan}, '{sex}')"
+
+t_query_follows = "call query_follows({id})"
+t_query_fans = "call query_fans({id})"
+
+#relation
+t_query_relationship = "call query_relationship({uid_1}, {uid_2})"
+t_insert_follow_user = "call insert_follow_user({uid_1}, {uid_2}, '{d_follow}')"
+t_delete_unfollow_user = "call delete_unfollow_user({uid_1}, {uid_2})"
 
 #works
 t_query_nworks = "call query_nworks({n})"

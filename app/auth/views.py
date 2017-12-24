@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import render_template, redirect, request, url_for, flash, make_response, current_app
+from flask import render_template, redirect, request, url_for, flash, make_response, current_app, jsonify
 from flask_login import login_user, login_required, logout_user, current_user
 from . import auth
 from ..models import User
@@ -82,7 +82,96 @@ def logout():
 def space(u_id):
     user = User.queryByUserid({'id': u_id}).getUserInfo()
     return render_template('auth/space.html', user=user)
-    
+
+@auth.route('/api/follow', methods=['POST', 'GET'])
+@login_required
+def apiFollow():
+    '''
+    def test():
+        data = {}
+        data['uid_2'] = '4'
+        data['d_follow'] = '2017-12-12'
+
+        r = requests.post('http://127.0.0.1:5000/auth/api/follow', data=data)
+        print r.text
+    '''
+    if request.method == 'POST':
+        parameter = {}
+        parameter['uid_1'] = current_user.get_id()
+        parameter['uid_2'] = request.form['uid_2']
+        parameter['d_follow'] = request.form['d_follow']
+        user_1 = User.queryByUserid({'id': parameter['uid_1']})
+        r = user_1.hasFollow(parameter)
+        if not r:
+            r = user_1.followUser(parameter)
+        current_app.logger.info('follow user %s' % parameter['uid_2'])
+        return make_response('0', 200)
+    return render_template('auth/login.html')
+
+@auth.route('/api/unfollow', methods=['POST', 'GET'])
+@login_required
+def apiUnfollow():
+    '''
+    def test():
+        data = {}
+        data['uid_2'] = '4'
+        data['d_follow'] = '2017-12-12'
+
+        r = requests.post('http://127.0.0.1:5000/auth/api/unfollow', data=data)
+        print r.text
+    '''
+    if request.method == 'POST':
+        parameter = {}
+        parameter['uid_1'] = current_user.get_id()
+        parameter['uid_2'] = request.form['uid_2']
+        parameter['d_follow'] = request.form['d_follow']
+        user_1 = User.queryByUserid({'id': parameter['uid_1']})
+        r = user_1.hasFollow(parameter)
+        if r is None:
+            return make_response('1', 200)
+        user_1.unfollowUser(parameter)
+        current_app.logger.info('unfollow user %s' % parameter['uid_2'])
+        return make_response('0', 200)
+    return render_template('auth/login.html')
+
+@auth.route('/api/getFollows', methods=['POST', 'GET'])
+@login_required
+def apiGetFollows():
+    '''
+    def test():
+        data = {}
+        data['uid_2'] = '1'
+        data['d_follow'] = '2017-12-12'
+
+        r = requests.post('http://127.0.0.1:5000/auth/api/getFollows', data=data)
+        print r.text
+    '''
+    if request.method == 'POST':
+        parameter = {}
+        parameter['id'] = current_user.get_id()
+        follows = User.getFollows(parameter)
+        return jsonify(follows)
+    return render_template('auth/login.html')
+
+@auth.route('/api/getFans', methods=['POST', 'GET'])
+@login_required
+def apiGetFans():
+    '''
+    def test():
+        data = {}
+        data['uid_2'] = '4'
+        data['d_follow'] = '2017-12-12'
+
+        r = requests.post('http://127.0.0.1:5000/auth/api/getFans', data=data)
+        print r.text
+    '''
+    if request.method == 'POST':
+        parameter = {}
+        parameter['id'] = current_user.get_id()
+        follows = User.getFans(parameter)
+        return jsonify(follows)
+    return render_template('auth/login.html')
+
 '''
 @auth.before_app_request
 def before_request():
