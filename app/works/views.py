@@ -1,4 +1,4 @@
-from flask import render_template, session, redirect, url_for,flash, current_app, request
+from flask import render_template, session, redirect, url_for,flash, current_app, request, jsonify
 from datetime import datetime
 from . import works
 from flask_login import login_user, login_required, logout_user, current_user
@@ -76,7 +76,7 @@ def uploads():
             files.filename = secure_filename(files.filename)
             filename = photos.save(files)
             create_thumbnail(filename)
-            return photos.url(filename)
+            return jsonify(photos.url(filename))
         except:
             return None
     return render_template('works/post.html')
