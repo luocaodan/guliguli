@@ -14,16 +14,23 @@
     <div class="col-md-4">
         <form id="post" class="form-horizontal" role="form">
             <div class="form-group">
-                <input type="text" name="workName" v-model="postName" class="form-control" v-on:focus="resetInfo()" placeholder="作品名">
+                <input type="text" name="workName" v-model="w_name" class="form-control" v-on:focus="resetInfo()" placeholder="作品名">
             </div>
             <div class="form-group">
-                <div class="dropzone" action="/works/post" id="imgList" v-on:click="resetInfo()">
+                <textarea name="cont" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="dropzone" action="/works/api/uploads" id="imgList" v-on:click="resetInfo()">
                 </div>
+            </div>
+            <div class="form-group">
+                <label>板块</label>
             </div>
             <div class="form-group">
                 <button id="info" type="button" class="btn-register" v-on:click="submit">提交</button>
             </div>
             <input id="img" type="text" name="img" style="display:none">
+            <input id="d_post" type="text" name="d_post" style="display:none;">
         </form>
     </div>
     <div class="col-md-4"></div>
@@ -39,7 +46,7 @@
     var post_info = new Vue({
         el: "#post",
         data: {
-            postName: ""
+            w_name: ""
         },
         methods: {
             resetInfo: function() {
