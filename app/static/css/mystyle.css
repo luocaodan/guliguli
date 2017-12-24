@@ -256,3 +256,16 @@ option {
 .dz-error-message {
     display: none !important;
 }
+
+.post-radio {
+    display: none;
+}
+
+.plate {
+    border: 1px solid #25c6ff;
+    border-radius: 10px;
+    padding: 3px 10px;
+    margin-right: 25px;
+    cursor: pointer;
+    color: #25c6ff;
+}

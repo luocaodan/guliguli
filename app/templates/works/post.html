@@ -12,12 +12,12 @@
 <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <form id="post" class="form-horizontal" role="form">
+        <form id="post" class="form-horizontal" role="form" method="post">
             <div class="form-group">
-                <input type="text" name="workName" v-model="w_name" class="form-control" v-on:focus="resetInfo()" placeholder="作品名">
+                <input type="text" name="w_name" v-model="w_name" class="form-control" v-on:focus="resetInfo()" placeholder="作品名">
             </div>
             <div class="form-group">
-                <textarea name="cont" class="form-control" rows="3"></textarea>
+                <textarea name="cont" class="form-control" rows="3" v-model="cont" v-on:focus="resetInfo()"></textarea>
             </div>
             <div class="form-group">
                 <div class="dropzone" action="/works/api/uploads" id="imgList" v-on:click="resetInfo()">
@@ -25,6 +25,23 @@
             </div>
             <div class="form-group">
                 <label>板块</label>
+            </div>
+            <div class="form-group">
+                <label id="op1" class="plate" onclick="choosePlate(this.id)">
+                    <input type="radio" value="1" class="post-radio" name="p_id"> 手绘
+                </label>
+                <label id="op2" class="plate" onclick="choosePlate(this.id)">
+                    <input type="radio" value="2" class="post-radio" name="p_id"> 板绘 
+                </label> 
+                <label id="op3" class="plate" onclick="choosePlate(this.id)">
+                    <input type="radio" value="3" class="post-radio" name="p_id"> PS 
+                </label>
+                <label id="op4" class="plate" onclick="choosePlate(this.id)">
+                    <input type="radio" value="4" class="post-radio" name="p_id"> 厚涂 
+                </label>
+                <label id="op5" class="plate" onclick="choosePlate(this.id)">
+                    <input type="radio" value="5" class="post-radio" name="p_id"> 水彩 
+                </label>
             </div>
             <div class="form-group">
                 <button id="info" type="button" class="btn-register" v-on:click="submit">提交</button>
@@ -36,6 +53,17 @@
     <div class="col-md-4"></div>
 </div>
 <script>
+    function choosePlate(id) {
+        $("#info").text("提交"); 
+        var reset_arr = ["#op1", "#op2", "#op3", "#op4", "#op5"];
+        var p_id = "#" + id;
+        for(var i = 0;i < reset_arr.length;i++) {
+            if(p_id !== reset_arr[i]) {
+                $(reset_arr[i]).attr("style", "background-color: #fff;color: #25c6ff;");
+            }
+        }
+        $(p_id).attr("style", "background-color: #25c6ff;color: #fff");
+    }
     var img_arr = [];
     Dropzone.options.imgList = {
         success: function(file, response, e) {
@@ -46,22 +74,34 @@
     var post_info = new Vue({
         el: "#post",
         data: {
-            w_name: ""
+            w_name: "",
+            cont: ""
         },
         methods: {
             resetInfo: function() {
                 $("#info").text("提交");
             },
             submit: function() {
-                if(this.postName == "") {
+                if(this.w_name == "") {
                     $("#info").text("请填写作品名");
+                    return;
+                }
+                if(this.cont == "") {
+                    $("#info").text("请填写作品介绍");
                     return;
                 }
                 if(img_arr.length === 0) {
                     $("#info").text("请上传作品");
                     return;
                 }
+                var plate_id = $("input:radio[name='p_id']:checked").val();
+                if(!plate_id) {
+                    $("#info").text("请选择板块");
+                    return;
+                }
                 $("#img").val(JSON.stringify(img_arr));
+                var d_post = new Date();
+                $("#d_post").val(d_post.toLocaleDateString());
                 $("form").submit();
             }
         }

@@ -55,3 +55,10 @@ A place for acger
 + add_activity 添加活动
 #### /add_plate
 + add_plate 添加板块
+
+## 板块都有啥
++ 手绘
++ 板绘
++ PS
++ 厚涂
++ 水彩

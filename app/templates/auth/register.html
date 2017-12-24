@@ -284,6 +284,16 @@
                     $("#continue-second").text("两次填写密码不一致")
                     return;
                 }
+                // 用户名长度
+                if(this.username.length < 5 || this.username.length > 16) {
+                    $("#continue-second").text("用户名应为5到16位");
+                    return;
+                }
+                // 检测密码长度
+                if(this.password.length < 6) {
+                    $("#continue-second").text("密码不能少于6位");
+                    return;
+                }
                 // 检测用户是否存在
                 $.post("/auth/api/isHasUser", {"username": this.username}, function(data) {
                     if(parseInt(data) === 1) {
@@ -310,7 +320,7 @@
                     $("#continue-third").text("请填写日期");
                     return;
                 }
-                this.date_birth = year + "-" + month + "-" + day;
+                this.date_birth = year + "/" + month + "/" + day;
 
                 this.sex = $("input:radio[name='sex']:checked").val();
                 if(!this.sex) {
