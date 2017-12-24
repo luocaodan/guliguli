@@ -9,8 +9,10 @@ from ..email import send_email
 #from .. import mongo
 import random
 import datetime
+from ..models import User
 
 
 @main.route('/')
 def home_page():
-    return render_template('index.html', user=current_user)
+    user = User.queryByUserid({'id': current_user.get_id()}).getUserInfo()
+    return render_template('index.html', user=user)
