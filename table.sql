@@ -12,7 +12,7 @@ create table if not exists users (
     username varchar(16) not null unique,
     password char(32) not null,
     nickname varchar(16) not null,
-    profile_photo varchar(16) not null,         -- 用户头像url
+    profile_photo varchar(32) not null,         -- 用户头像url
     date_birth date not null,
     date_register date not null,
     signature varchar(32) not null,
@@ -68,7 +68,7 @@ create table if not exists works (
     userid int(8) not null,
     works_name varchar(128) not null,           -- 作品名
     content varchar(256) not null,              -- 作品描述
-    image varchar(16) not null,                 -- 作品图片url
+    image varchar(128) not null,                 -- 作品图片url
     date_post date not null,
     plateid int(8) not null,
     primary key(worksid),

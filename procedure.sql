@@ -8,7 +8,7 @@ delimiter //  -- 改变分隔符
     query_by_username (传入用户名)
     根据用户名查找用户
 */
-create procedure query_by_username(name varchar(16))
+create procedure query_user_username(name varchar(16))
     begin
         select * from users 
         where username=name;
@@ -18,7 +18,7 @@ create procedure query_by_username(name varchar(16))
     query_by_id (传入用id)
     根据用户名查找用户
 */
-create procedure query_by_userid(id int(8))
+create procedure query_user_userid(id int(8))
     begin
         select * from users 
         where userid=id;
@@ -28,7 +28,7 @@ create procedure query_by_userid(id int(8))
     find_user (传入用户名)
     检查用户是否存在
 */
-create procedure find_user(name varchar(16))
+create procedure query_countuser_username(name varchar(16))
     begin
         select count(*) from users
         where username=name;
@@ -40,11 +40,11 @@ create procedure find_user(name varchar(16))
     username password nickname profile_photo
     date_birth date_register signature follow fans
 */
-create procedure register_user(
+create procedure insert_user(
     name varchar(16), 
     pwd char(32), 
     nick varchar(16),
-    photo varchar(16),
+    photo varchar(32),
     birth date,
     reg_date date,
     signa varchar(32),
@@ -62,7 +62,7 @@ create procedure register_user(
     select_works
     首页罗列作品，随机选取作品中的n条记录
 */
-create procedure get_nworks(n int) 
+create procedure query_nworks(n int) 
     begin
         select works_name, image from works
         order by rand() limit n;
@@ -72,7 +72,7 @@ create procedure get_nworks(n int)
     select_activity
     活动页罗列活动(n个)
 */
-create procedure get_nactivity(n int)
+create procedure query_nactivity(n int)
     begin
         select * from activity limit n;
     end//
@@ -117,7 +117,7 @@ create procedure insert_works(
     u_id int(8), 
     w_name varchar(128), 
     cont varchar(256),
-    img varchar(16),
+    img varchar(128),
     d_post date,
     p_id int(8)
     )
@@ -131,7 +131,7 @@ create procedure insert_works(
     follow_user
     添加关注信息
 */
-create procedure follow_user(uid1 int(8), uid2 int(8), d_follow date)
+create procedure update_follow_user(uid1 int(8), uid2 int(8), d_follow date)
     begin
         insert into
         relationship(userid1, userid2, date_follow)
@@ -142,7 +142,7 @@ create procedure follow_user(uid1 int(8), uid2 int(8), d_follow date)
     unfollow_user
     删除关注信息
 */
-create procedure unfollow_user(uid1 int(8), uid2 int(8))
+create procedure update_unfollow_user(uid1 int(8), uid2 int(8))
     begin
         delete from relationship
         where userid1=uid1 and userid2=uid2;
@@ -152,7 +152,7 @@ create procedure unfollow_user(uid1 int(8), uid2 int(8))
     sign_ac
     添加参加活动信息
 */
-create procedure sign_ac(a_id int(8), u_id int(8), d_sign date)
+create procedure update_sign_ac(a_id int(8), u_id int(8), d_sign date)
     begin
         insert into sign_activity(activityid, userid, date_sign)
         values(a_id, u_id, d_sign);

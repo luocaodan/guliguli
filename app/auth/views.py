@@ -13,75 +13,53 @@ import logging
 def login():
     #form = LoginForm()
     if request.method == 'POST':
-        username = request.form['username']
-        pwd = request.form['password']
-        user = User.queryByUsername(username)
-        if user is None:
-            #resp = make_response('1', 200)
-            #render_template('auth/login.html')
-            return render_template('auth/login.html')
-        if user is not None and user.verifyPassword(pwd):
-            login_user(user, True)
-            print "login: " + username
-            return redirect(request.args.get('next') or url_for('main.home_page'))
-            #return 'hello %s'%user.username
-        #flash('Invalid username or password.')
-        #resp = make_response('2', 200)
-        return render_template('auth/login.html')
-        #return 'hello %s'%user.username
+        return redirect(request.args.get('next') or url_for('main.home_page'))
     return render_template('auth/login.html')
 
 @auth.route('/api/login', methods=['POST', 'GET'])
 def apiLogin():
-    #form = LoginForm()
     if request.method == 'POST':
-        username = request.form['username']
-        pwd = request.form['password']
-        user = User.queryByUsername(username)
+        parameter = {}
+        parameter['name'] = request.form['username']
+        parameter['pwd'] = request.form['password']
+        user = User.queryByUsername(parameter)
         if user is None:
             return make_response('1', 200)
-        if user is not None and user.verifyPassword(pwd):
+        if user is not None and user.verifyPassword(parameter['pwd']):
             login_user(user, True)
-            print "login: " + username
-            #return redirect(request.args.get('next') or url_for('main.home_page'))
+            print "login: " + parameter['name']
             return make_response('0', 200)
-            #return 'hello %s'%user.username
-        #flash('Invalid username or password.')
         resp = make_response('2', 200)
         return resp
-        #return 'hello %s'%user.username
-    return render_template('auth/login.html', error = '')
+    return render_template('auth/login.html')
 
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        nickname = request.form['nickname']
-        profile_photo = request.form['profile_photo']
-        date_birth = request.form['date_birth']
-        date_register = request.form['date_register']
-        signature = request.form['signature']
-        sex = request.form['sex']
-        follow = 0
-        fans = 0
-        if User.queryByUsername(username) is not None:
+        parameter = {}
+        parameter['name'] = request.form['username']
+        parameter['pwd'] = request.form['password']
+        parameter['nick'] = request.form['nickname']
+        parameter['photo'] = url_for('static', filename = 'image/no_photo.png')
+        parameter['birth'] = request.form['date_birth']
+        parameter['reg_date'] = request.form['date_register']
+        parameter['signa'] = request.form['signature']
+        parameter['sex'] = request.form['sex']
+        parameter['fol'] = '0'
+        parameter['fan'] = '0'
+        if User.queryByUsername(parameter) is not None:
             resp = make_response('1', 200)
             return resp
-        r = User.registerUser(username, password, nickname, profile_photo, date_birth, date_register, signature, follow, fans, sex)
-        print "register user: " + str(r)
-        #return 'hello %s'%user.username
-        #flash('Invalid username or password.')
-        #return 0
+        r = User.registerUser(parameter)
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html')
 
 @auth.route('/api/isHasUser', methods=['POST', 'GET'])
 def isHasUser():
     if request.method == 'POST':
-        username = request.form['username']
-        r = User.find_user(username)
-        #flash('Invalid username or password.')
+        parameter = {}
+        parameter['name'] = request.form['username']
+        r = User.find_user(parameter)
         if r > 0:
             resp = make_response('1', 200)
             return resp
@@ -98,6 +76,11 @@ def logout():
     print "logout user"
     return redirect(url_for('main.home_page'))
 
+@auth.route('/space/<u_id>')
+def space(u_id):
+    user = User.queryByUserid({'id': u_id}).getUserInfo()
+    return render_template('auth/space.html', user=user)
+    
 '''
 @auth.before_app_request
 def before_request():

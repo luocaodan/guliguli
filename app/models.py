@@ -5,7 +5,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
 from . import login_manager
 import json
-
+from sqlprocedure import *
 
 class User(UserMixin):
     def __init__(self, userid, username, password, nickname, profile_photo, date_brith, date_register, signature, follow, fans, sex):
@@ -22,41 +22,61 @@ class User(UserMixin):
         self.sex = sex
 
     def verifyPassword(self, pwd):
-        print pwd
-        print self.password
         if pwd == self.password:
+            self.password = ''
             return True
         return False
     
     def getFollows(self):
         pass
 
+    def getUserInfo(self):
+        return User(self.id, '', '', self.nickname, self.profile_photo, self.date_brith, self.date_register, self.signature, self.follow , self.fans, self.sex)
+
     @staticmethod
-    def queryByUsername(username):
-        r =  db.query_by_username(username)
+    def queryByUsername(parameter):
+        template = t_query_user_username
+        r = db.runQuerySql(template, parameter, 1)
+        if r is None:
+            return r
+        return User(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[6], r[7], r[8], r[9])
+
+    @staticmethod
+    def queryByUserid(parameter):
+        template = t_query_user_userid
+        r = db.runQuerySql(template, parameter, 1)
         #print r
         if r is None:
             return r
         return User(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[6], r[7], r[8], r[9])
 
     @staticmethod
-    def queryByUserid(userid):
-        r =  db.query_by_userid(userid)
-        #print r
-        if r is None:
-            return r
-        return User(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[6], r[7], r[8], r[9])
-
-    @staticmethod
-    def registerUser(name, pwd, nick, photo, birth, reg_date, signa, fol, fan, sex):
-        r = db.register_user(name, pwd, nick, photo, birth, reg_date, signa, fol, fan, sex)
+    def registerUser(parameter):
+        template = t_insert_user
+        r = db.runInsertSql(template, parameter)
         return r
 
     @staticmethod
-    def find_user(name):
-        r = db.find_user(name)
+    def find_user(parameter):
+        template = t_query_countuser_username
+        r = db.runQuerySql(template, parameter, 1)
         if r[0] == 0:
             return False
+        return True
+
+    def generate_confirmation_token(self, expiration=3600):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'confirm': self.id})
+
+    def confirm(self, token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return False
+        if data.get('confirm') != self.id:
+            return False
+        self.confirmed = True
         return True
 
 class Works():
@@ -70,17 +90,19 @@ class Works():
         self.palteid = palteid
     
     @staticmethod
-    def queryWorks(worksid):
-        print 'queryWokrs %s' % worksid
-        r = db.query_works(worksid)
+    def queryWorks(parameter):
+        tamplate = t_query_works
+        #r = db.query_works(worksid)
+        r = db.runQuerySql(tamplate, parameter, 1)
         if r is None:
             return None
         return Works(r[0], r[1], r[2], r[3] , r[4], r[5], r[6])
     
     @staticmethod
-    def insertWorks(u_id, w_name, cont, img, d_post, p_id):
-        print 'models inster works'
-        r = db.insert_works(u_id, w_name, cont, img, d_post, p_id)
+    def insertWorks(parameter):
+        tamplate = t_insert_works
+        #r = db.insert_works(u_id, w_name, cont, img, d_post, p_id)
+        r = db.runInsertSql(tamplate, parameter)
         return r
     
     @staticmethod
@@ -131,62 +153,6 @@ class Activity():
 
 @login_manager.user_loader
 def load_user(userid):
-    print "log user id = " + userid
-    return User.queryByUserid(userid)
-
-'''
-class Role(UserMixin, db.Model):
-    __tablename__ = 'roles'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
-
-    users = db.relationship('User', backref='role', lazy='dynamic')
-
-    def __repr__(self):
-        return '<Role %r>' % self.name
-
-class User(UserMixin, db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(64), unique=True, index=True)
-    username = db.Column(db.String(64), unique=True, index=True)
-    password_hash = db.Column(db.String(128))
-    confirmed = db.Column(db.Boolean, default=False)
-
-
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-
-    @property
-    def password(self):
-        raise AttributeError('Password is not a readable attribute')
-
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def verify_password(self, password):
-        return check_password_hash(self.password_hash, password)
-
-    def generate_confirmation_token(self, expiration=3600):
-        s = Serializer(current_app.config['SECRET_KEY'], expiration)
-        return s.dumps({'confirm': self.id})
-
-    def confirm(self, token):
-        s = Serializer(current_app.config['SECRET_KEY'])
-        try:
-            data = s.loads(token)
-        except:
-            return False
-        if data.get('confirm') != self.id:
-            return False
-        self.confirmed = True
-        db.session.add(self)
-        return True
-
-    def __repr__(self):
-        return '<User %r>' % self.username
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-'''
+    parameter = {}
+    parameter['id'] = userid
+    return User.queryByUserid(parameter)

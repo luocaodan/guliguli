@@ -35,8 +35,8 @@ def test_post():
     print 'test_post'
     data = {}
     data['w_name'] = 'Test'
-    data['cont'] = str({'text': 'This is a test.', 'img': ['http://127.0.0.1:5000/_uploads/photos/10.jpg', 'http://127.0.0.1:5000/_uploads/photos/17.jpg']})
-    data['img'] = ''
+    data['cont'] = str({'text': 'This is a test.', })
+    data['img'] =  str(['http://127.0.0.1:5000/_uploads/photos/10.jpg', 'http://127.0.0.1:5000/_uploads/photos/17.jpg'])
     data['d_post'] = '2017-12-12'
     data['p_id'] = '1'
 
@@ -45,7 +45,9 @@ def test_post():
 
 @works.route('/<w_id>')
 def worksPage(w_id):
-    works = Works.queryWorks(w_id)
+    parameter = {}
+    parameter['w_id'] = w_id
+    works = Works.queryWorks(parameter)
     if works is not None:
         print works.works_name
         return render_template('works/works.html', works=works, user=current_user)
@@ -56,14 +58,14 @@ def worksPage(w_id):
 @login_required
 def post():
     if request.method == 'POST':
-        u_id = 1#current_user.id
-        w_name = request.form['w_name']
-        cont = request.form['cont'].replace("'","\\\'") 
-        img = request.form['img']
-        d_post = request.form['d_post']
-        p_id = request.form['p_id']
-        r = Works.insertWorks(u_id, w_name, cont, img, d_post, p_id)
-        print 'insert works: %s' % w_name
+        parameter = {}
+        parameter['u_id'] = current_user.id
+        parameter['w_name'] = request.form['w_name']
+        parameter['cont'] =request.form['cont']
+        parameter['img'] = request.form['img']
+        parameter['d_post'] = request.form['d_post']
+        parameter['p_id'] = request.form['p_id']
+        r = Works.insertWorks(parameter)
         redirect(url_for('works.worksPage', w_id = r))
     return render_template('works/post.html')
 
