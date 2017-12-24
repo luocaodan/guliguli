@@ -13,6 +13,10 @@ from ..models import User
 
 
 @main.route('/')
+@login_required
 def home_page():
-    user = User.queryByUserid({'id': current_user.get_id()}).getUserInfo()
+    user = None
+    u_id = current_user.get_id()
+    if u_id is not None:
+        user = User.queryByUserid({'id': u_id}).getUserInfo()
     return render_template('index.html', user=user)

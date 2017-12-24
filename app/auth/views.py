@@ -77,6 +77,7 @@ def logout():
     return redirect(url_for('main.home_page'))
 
 @auth.route('/space/<u_id>')
+@login_required
 def space(u_id):
     user = User.queryByUserid({'id': u_id}).getUserInfo()
     return render_template('auth/space.html', user=user)
