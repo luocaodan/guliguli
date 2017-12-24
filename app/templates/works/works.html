@@ -1,4 +1,12 @@
-{% extends base.html %}
+{% extends "base.html" %}
 
 {% block title %}作品{% endblock %}
-{% block }
+{% block content %}
+<p>worksid: {{ works.worksid }}</p>
+<p>userid: {{ works.userid }}</p>
+<p>works_name: {{ works.works_name }}</p>
+<p>content: {{ works.content }}</p>
+<p>image: {{ works.image }}</p>
+<p>date_post: {{ works.date_post }}</p>
+<p>plateid: {{ works.palteid }}</p>
+{% endblock %}

@@ -1,4 +1,4 @@
-from flask import render_template, session, redirect, url_for,flash, current_app, request
+from flask import render_template, session, redirect, url_for,flash, current_app, request, jsonify
 from datetime import datetime
 from . import works
 from flask_login import login_user, login_required, logout_user, current_user
@@ -35,7 +35,7 @@ def test_post():
     print 'test_post'
     data = {}
     data['w_name'] = 'Test'
-    data['cont'] = {'text': 'This is a test.', 'img': ['http://127.0.0.1:5000/_uploads/photos/10.jpg', 'http://127.0.0.1:5000/_uploads/photos/17.jpg']}
+    data['cont'] = str({'text': 'This is a test.', 'img': ['http://127.0.0.1:5000/_uploads/photos/10.jpg', 'http://127.0.0.1:5000/_uploads/photos/17.jpg']})
     data['img'] = ''
     data['d_post'] = '2017-12-12'
     data['p_id'] = '1'
@@ -49,15 +49,16 @@ def worksPage(w_id):
     if works is not None:
         print works.works_name
         return render_template('works/works.html', works=works, user=current_user)
+    print 'works %s not find' % w_id
     return render_template("404.html"), 404
 
 @works.route('/post', methods = ['GET', 'POST'])
-#@login_required
+@login_required
 def post():
     if request.method == 'POST':
         u_id = 1#current_user.id
         w_name = request.form['w_name']
-        cont = request.form['cont']
+        cont = request.form['cont'].replace("'","\\\'") 
         img = request.form['img']
         d_post = request.form['d_post']
         p_id = request.form['p_id']
@@ -75,7 +76,7 @@ def uploads():
             files.filename = secure_filename(files.filename)
             filename = photos.save(files)
             create_thumbnail(filename)
-            return photos.url(filename)
+            return jsonify(photos.url(filename))
         except:
             return None
     return render_template('works/post.html')
