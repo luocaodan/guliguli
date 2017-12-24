@@ -6,8 +6,8 @@ import threading
 import logging
 import MySQLdb
 import functools
+from flask import current_app
 
-log = logging.getLogger('werkzeug')
 #from models import User
 
 class DBError(Exception):
@@ -123,7 +123,7 @@ def runQuerySql(tmplate, parameters, num):
     sql = tmplate.format(**parameters)
     global _db_ctx
     cursor = None
-    log.info('SQL: ' + sql)
+    current_app.logger.info('SQL: ' + sql)
     try:
         cursor = _db_ctx.connection.cursor()
         cursor.execute(sql)
@@ -147,14 +147,14 @@ def runInsertSql(tmplate, parameters):
     sql = tmplate.format(**parameters)
     global _db_ctx
     cursor = None
-    log.info('SQL: ' + sql)
+    current_app.logger.info('SQL: ' + sql)
     try:
         cursor = _db_ctx.connection.cursor()
         cursor.execute(sql)
         #if transaction
         r = cursor.rowcount
         if _db_ctx.transcations == 0:
-            log.info('auto commit')
+            current_app.logger.info('auto commit')
             _db_ctx.connection.commit()
         return r
     finally:

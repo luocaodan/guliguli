@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import render_template, redirect, request, url_for, flash, make_response
+from flask import render_template, redirect, request, url_for, flash, make_response, current_app
 from flask_login import login_user, login_required, logout_user, current_user
 from . import auth
 from ..models import User
@@ -27,7 +27,7 @@ def apiLogin():
             return make_response('1', 200)
         if user is not None and user.verifyPassword(parameter['pwd']):
             login_user(user, True)
-            print "login: " + parameter['name']
+            current_app.logger.info('login user %s' % parameter['name'])
             return make_response('0', 200)
         resp = make_response('2', 200)
         return resp
@@ -51,6 +51,7 @@ def register():
             resp = make_response('1', 200)
             return resp
         r = User.registerUser(parameter)
+        current_app.logger.info('register user %s' % parameter['name'])
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html')
 
@@ -73,7 +74,7 @@ def isHasUser():
 @login_required
 def logout():
     logout_user()
-    print "logout user"
+    current_app.logger.info('logout user')
     return redirect(url_for('main.home_page'))
 
 @auth.route('/space/<u_id>')
