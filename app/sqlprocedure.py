@@ -15,7 +15,7 @@ t_query_fans = u"call query_fans({id})"
 t_delete_user = u"call delete_user({id})"
 
 #admin
-t_query_admin = u"call query_admin({name}, {pwd})"
+t_query_admin = u"call query_admin('{name}', '{pwd}')"
 
 #relation
 t_query_relationship = u"call query_relationship({uid_1}, {uid_2})"
