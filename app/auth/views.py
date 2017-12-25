@@ -7,7 +7,28 @@ from ..email import send_email
 from .forms import LoginForm, RegistrationForm
 from app import db
 import logging
+import PIL
+from PIL import Image
+import traceback
+import os
+from .. import avatar
+from werkzeug import secure_filename
 
+
+def create_avatar(image):
+    try:
+        base_width = 80
+        img = Image.open(os.path.join(current_app.config['UPLOADED_AVATAR_DEST'], image))
+        w_percent = (base_width / float(img.size[0]))
+        h_size = int((float(img.size[1]) * float(w_percent)))
+        img = img.resize((base_width, h_size), PIL.Image.ANTIALIAS)
+        img.save(os.path.join(current_app.config['UPLOADED_AVATAR_DEST'], image))
+
+        return True
+
+    except:
+        print traceback.format_exc()
+        return False
 
 @auth.route('/login', methods=['POST', 'GET'])
 def login():
@@ -220,6 +241,7 @@ def apiUpdateInfo():
         data['nick'] = 'update user'
         data['photo'] = '/static/image/no_photo.png'
         data['signa'] = 'this is update info test'
+        data['sex'] = 'this is update info test'
         r = requests.post('http://127.0.0.1:5000/auth/api/updateInfo', data=data)
         print r.text
     '''
@@ -229,12 +251,28 @@ def apiUpdateInfo():
         parameter['nick'] = request.form['nick']
         parameter['photo'] = request.form['photo']
         parameter['signa'] = request.form['signa']
+        parameter['sex'] = request.form['sex']
         user = User.queryByUserid({'id': parameter['id']})
         r = user.updateUserInfo(parameter)
         if r:
             return jsonify(True)
         return jsonify(False)
     return render_template('auth/login.html')
+
+@auth.route('/api/uploads', methods = ['GET', 'POST'])
+@login_required
+def uploads():
+    if request.method == 'POST' and 'file' in request.files:
+        try:
+            files = request.files['file']
+            files.filename = secure_filename(files.filename)
+            filename = avatar.save(files)
+            create_avatar(filename)
+            return jsonify(avatar.url(filename))
+        except:
+            c = []
+            return jsonify(c)
+    return render_template('works/post.html')
 
 '''
 @auth.before_app_request

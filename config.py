@@ -3,6 +3,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 appdir = os.path.join(basedir, 'app')
 staicdir = os.path.join(appdir, 'static')
 uploadir = os.path.join(staicdir, 'uploads')
+avatardir = os.path.join(staicdir, 'avatar')
 thudir = os.path.join(uploadir, 'thumbnail')
 
 class Config:
@@ -13,6 +14,7 @@ class Config:
     FLASKY_MAIL_SENDER = 'Flasky admin <malxi@null.com>'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN') or '@qq.com'
     UPLOADED_PHOTOS_DEST = uploadir
+    UPLOADED_AVATAR_DEST = avatardir
     THUMBNAIL_FOLDER = thudir
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif', 'bmp'])
     HOST = '0.0.0.0'

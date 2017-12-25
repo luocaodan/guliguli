@@ -28,6 +28,7 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
 photos = UploadSet('photos', IMAGES)
+avatar = UploadSet('avatar', IMAGES)
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -50,6 +51,7 @@ def create_app(config_name):
 
     #uploads
     configure_uploads(app, photos)
+    configure_uploads(app, avatar)
     patch_request_class(app)
 
     # attach routes and custom error pages here
