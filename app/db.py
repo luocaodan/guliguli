@@ -24,6 +24,7 @@ class _LazyConnection(object):
     def cursor(self):
         if self.connection is None:
             _connection = engine.connect()
+            _connection.set_character_set('utf8')
             logging.info('[CONNECTION] [OPEN] connection <%s>...' % hex(id(_connection)))
             self.connection = _connection
         return self.connection.cursor()
@@ -118,9 +119,10 @@ def create_engine(user, passwd, db='guliguli', host='127.0.0.1', port=3306, **kw
 @with_connection
 def runQuerySql(tmplate, parameters, num):
     for k, v in parameters.iteritems():
-        parameters[k] = str(parameters[k])
-        parameters[k] = parameters[k].replace("'","\\\'")
-        parameters[k] = parameters[k].replace("\"","\\\"")
+        #parameters[k] = str(parameters[k])
+        if isinstance(parameters[k],str):
+            parameters[k] = parameters[k].replace("'","\\\'")
+            parameters[k] = parameters[k].replace("\"","\\\"")
     sql = tmplate.format(**parameters)
     global _db_ctx
     cursor = None
@@ -131,10 +133,23 @@ def runQuerySql(tmplate, parameters, num):
         #if transaction
         if num <= 1:
             r = cursor.fetchone()
+            if r:
+                i = 0
+                for field in r:
+                    if isinstance(field,str):
+                        r[i] = unicode(field, "utf-8")
+                        i += 1
         else:
             r = cursor.fetchall()
-        if not r:
-            return None
+            i = 0
+            if r:
+                for tp in r:
+                    j = 0
+                    for field in tp:
+                        if isinstance(field,str):
+                            r[i][j] = unicode(field, "utf-8")
+                            j += 1
+                    i += 1
         return r
     finally:
         if cursor:
@@ -143,9 +158,10 @@ def runQuerySql(tmplate, parameters, num):
 @with_connection
 def runInsertSql(tmplate, parameters):
     for k, v in parameters.iteritems():
-        parameters[k] = str(parameters[k])
-        parameters[k] = parameters[k].replace("'","\\\'")
-        parameters[k] = parameters[k].replace("\"","\\\"")
+        print parameters[k]
+        if isinstance(parameters[k],str):
+            parameters[k] = parameters[k].replace("'","\\\'")
+            parameters[k] = parameters[k].replace("\"","\\\"")
     sql = tmplate.format(**parameters)
     global _db_ctx
     cursor = None
