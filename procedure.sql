@@ -68,7 +68,7 @@ create procedure update_user(
     u_id int(8),
     pwd char(32), 
     nick varchar(16),
-    photo varchar(32),
+    photo varchar(128),
     birth date,
     reg_date date,
     signa varchar(32),
@@ -152,8 +152,8 @@ create procedure login_admin(name varchar(16), pwd char(32))
 create procedure insert_works(
     u_id int(8), 
     w_name varchar(128), 
-    cont varchar(256),
-    img varchar(128),
+    cont varchar(512),
+    img varchar(256),
     d_post date,
     p_id int(8)
     )
