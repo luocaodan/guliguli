@@ -9,10 +9,10 @@
     </div>
     <div class="col-md-8 works-image">
         <h2>{{ works.w_name }}</h2>
-        <p>{{ works.content }}</p>
-        <label class="w-plate">{{ works.plateid }}</label>
+        <p>{{ works.cont }}</p>
+        <label class="w-plate">{{ works.p_id }}</label>
         <ul id="w-list">
-            {% for w_img in works.image %}
+            {% for w_img in works.img %}
                 <li><img src="{{ w_img }}"></li>
             {% endfor %}
         </ul>
