@@ -53,7 +53,6 @@ def worksPage(w_id):
     parameter['w_id'] = w_id
     works = Works.queryWorks(parameter)
     if works is not None:
-        print works.works_name
         return render_template('works/works.html', works=works, user=user)
     return render_template("404.html"), 404
 

@@ -80,7 +80,10 @@ def logout():
 @auth.route('/space/<u_id>')
 @login_required
 def space(u_id):
-    user = User.queryByUserid({'id': u_id}).getUserInfo()
+    user = User.queryByUserid({'id': u_id})
+    if user is None:
+        return render_template("404.html"), 404
+    user = user.getUserInfo()
     if current_user.get_id() is not None and int(user.id) == int(current_user.get_id()):
         user.own = True
     else:
