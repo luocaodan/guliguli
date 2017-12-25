@@ -2,6 +2,23 @@
 
 {% block title %}作品{% endblock %}
 {% block content %}
+<div class="row works">
+    <div class="col-md-4 user-profile">
+        {{ works.userid }}
+    </div>
+    <div class="col-md-8 works-image">
+        <h2>{{ works.works_name }}</h2>
+        <p>{{ works.content }}</p>
+        <label class="w-plate">{{ works.plateid }}</label>
+        <ul id="w-list">
+
+        </ul>
+        
+    </div>
+</div>
+<div class="row comment">
+
+</div>
 <p>worksid: {{ works.worksid }}</p>
 <p>userid: {{ works.userid }}</p>
 <p>works_name: {{ works.works_name }}</p>
