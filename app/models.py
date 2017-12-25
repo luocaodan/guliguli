@@ -3,7 +3,7 @@ from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flask import current_app
+from flask import current_app, jsonify
 from . import login_manager
 import json
 from sqlprocedure import *
@@ -166,23 +166,32 @@ class User(UserMixin):
         return True
 
 class Works():
-    def __init__(self, worksid, userid, works_name, content, image, date_post, palteid):
+    def __init__(self, worksid, userid, works_name, content, image, date_post, plateid):
         self.worksid = worksid
         self.userid = userid
         self.works_name = works_name
         self.content = content
         self.image = image
         self.date_post = date_post
-        self.palteid = palteid
+        self.plateid = plateid
     
     @staticmethod
     def queryWorks(parameter):
         tamplate = t_query_works
+        p_name = [u'手绘', u'板绘', u'PS', u'厚涂', u'水彩']
         #r = db.query_works(worksid)
         r = db.runQuerySql(tamplate, parameter, 1)
+        workInfo = {}
         if r is None:
             return None
-        return Works(r[0], r[1], r[2], r[3] , r[4], r[5], r[6])
+        workInfo['w_id'] = r[0]
+        workInfo['u_id'] = r[1]
+        workInfo['w_name'] = r[2]
+        workInfo['cont'] = r[3]
+        workInfo['img'] =json.loads(r[4], encoding='utf-8')
+        workInfo['d_post'] = r[5]
+        workInfo['p_id'] = p_name[r[6]]
+        return workInfo
     
     @staticmethod
     def insertWorks(parameter):
