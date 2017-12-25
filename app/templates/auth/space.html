@@ -1,27 +1,59 @@
-<html>
-    <body>
-        <div id="app-space">
-            <div class="navbar">
-            </div>
-            <div class="space-header">
-                <div class="avatar">
-                    <img src="{{user.profile_photo}}">
-                    <h1>nickname: {{user.nickname}}</h1>
-                    <h1>id: {{user.id}}</h1>
-                    <h1>date_birth: {{user.date_birth}}</h1>
-                    <h1>date_register: {{user.date_register}}</h1>
-                    <h1>signature: {{user.signature}}</h1>
-                    <h1>follows: {{user.follow}}</h1>
-                    <h1>fans: {{user.fans}}</h1>
-                    <h1>sex: {{user.sex}}</h1>
+{% extends "base.html" %}
+{% block title %}
+{{ user.nickname }} - 个人空间
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6">
+        <div class="profile-info">
+            <h1>{{user.nickname}}</h1>
+            <div class="detail">
+                <div class="row detail-entry">
+                    <div class="col-md-2 detail-title">
+                        <label>性别</label>
+                    </div>
+                    <div class="col-md-8 detail-info">
+                        <label>{{ user.sex }}</label>
+                    </div>
+                </div>
+                <div class="row detail-entry">
+                    <div class="col-md-2 detail-title">
+                        <label>生日</label>
+                    </div>
+                    <div class="col-md-8 detail-info">
+                        <label>{{ user.date_birth }}</label>
+                    </div>
+                </div>
+                <div class="row detail-entry">
+                    <div class="col-md-2 detail-title">
+                        <label>签名</label>
+                    </div>
+                    <div class="col-md-8 detail-info">
+                        <label>{{ user.signature }}</label>
+                    </div>
+                </div>
+                <div class="row detail-entry">
+                    <div class="col-md-2 detail-title">
+                        <label>关注</label>
+                    </div>
+                    <div class="col-md-8 detail-info">
+                        <label>{{ user.follow }}</label>
+                    </div>
+                </div>
+                <div class="row detail-entry">
+                    <div class="col-md-2 detail-title">
+                        <label>粉丝</label>
+                    </div>
+                    <div class="col-md-8 detail-info">
+                        <label>{{ user.fans }}</label>
+                    </div>
                 </div>
             </div>
-            <div class="space-navigation">
-
-            </div>
-            <div class="content">
-
-            </div>
         </div>
-    </body>
-</html>
+    </div>
+    <div class="col-md-4">
+        <img class="profile-photo" src="{{user.profile_photo}}">
+    </div>
+</div>
+{% endblock %}
