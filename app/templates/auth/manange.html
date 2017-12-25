@@ -55,8 +55,8 @@
         </div>
         <script>
             function delete_user(id) {
-                $.post("lalalala", {"id": id}, function(data) {
-                    if(data == "true") {
+                $.post("/auth/api/deleteUser", {"id": id}, function(data) {
+                    if(JSON.parse(data) === true) {
                         $("#"+id).hide();
                     }
                     else {
