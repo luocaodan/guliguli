@@ -6,8 +6,8 @@ import threading
 import logging
 import MySQLdb
 import functools
+from flask import current_app
 
-log = logging.getLogger('werkzeug')
 #from models import User
 
 class DBError(Exception):
@@ -118,17 +118,18 @@ def create_engine(user, passwd, db='guliguli', host='127.0.0.1', port=3306, **kw
 @with_connection
 def runQuerySql(tmplate, parameters, num):
     for k, v in parameters.iteritems():
+        parameters[k] = str(parameters[k])
         parameters[k] = parameters[k].replace("'","\\\'")
         parameters[k] = parameters[k].replace("\"","\\\"")
     sql = tmplate.format(**parameters)
     global _db_ctx
     cursor = None
-    log.info('SQL: ' + sql)
+    current_app.logger.info('SQL: ' + sql)
     try:
         cursor = _db_ctx.connection.cursor()
         cursor.execute(sql)
         #if transaction
-        if num == 1:
+        if num <= 1:
             r = cursor.fetchone()
         else:
             r = cursor.fetchall()
@@ -142,19 +143,20 @@ def runQuerySql(tmplate, parameters, num):
 @with_connection
 def runInsertSql(tmplate, parameters):
     for k, v in parameters.iteritems():
+        parameters[k] = str(parameters[k])
         parameters[k] = parameters[k].replace("'","\\\'")
         parameters[k] = parameters[k].replace("\"","\\\"")
     sql = tmplate.format(**parameters)
     global _db_ctx
     cursor = None
-    log.info('SQL: ' + sql)
+    current_app.logger.info('SQL: ' + sql)
     try:
         cursor = _db_ctx.connection.cursor()
         cursor.execute(sql)
         #if transaction
         r = cursor.rowcount
         if _db_ctx.transcations == 0:
-            log.info('auto commit')
+            current_app.logger.info('auto commit')
             _db_ctx.connection.commit()
         return r
     finally:

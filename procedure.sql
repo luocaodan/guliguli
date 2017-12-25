@@ -59,6 +59,40 @@ create procedure insert_user(
     end//
 
 /*
+    register_user 
+    传入
+    username password nickname profile_photo
+    date_birth date_register signature follow fans
+*/
+create procedure update_user(
+    u_id int(8),
+    pwd char(32), 
+    nick varchar(16),
+    photo varchar(32),
+    birth date,
+    reg_date date,
+    signa varchar(32),
+    fol int(8),
+    fan int(8),
+    sex varchar(8)
+    )
+    begin
+       update users 
+       set password = pwd, nickname=nick, profile_photo=photo, date_register=reg_date, signature=signa, follow=fol, fans=fan, sex=sex
+       where userid=u_id;
+    end//    
+    
+/*
+    find_user (传入用户名)
+    检查用户是否存在
+*/
+create procedure query_relationship(uid_1 int(8), uid_2 int(8))
+    begin
+        select * from relationship
+        where userid1=uid_1 and userid2=uid_2;
+    end//    
+    
+/*
     select_works
     首页罗列作品，随机选取作品中的n条记录
 */
@@ -131,7 +165,33 @@ create procedure insert_works(
     follow_user
     添加关注信息
 */
-create procedure update_follow_user(uid1 int(8), uid2 int(8), d_follow date)
+create procedure query_follows(u_id int(8))
+    begin
+        select * from users
+        where userid in (
+            select userid2 from relationship
+            where userid1=u_id
+        );
+    end//    
+
+/*
+    follow_user
+    添加关注信息
+*/
+create procedure query_fans(u_id int(8))
+    begin
+        select * from users
+        where userid in (
+            select userid1 from relationship
+            where userid2=u_id
+        );
+    end//   
+     
+/*
+    follow_user
+    添加关注信息
+*/
+create procedure insert_follow_user(uid1 int(8), uid2 int(8), d_follow date)
     begin
         insert into
         relationship(userid1, userid2, date_follow)
@@ -142,7 +202,7 @@ create procedure update_follow_user(uid1 int(8), uid2 int(8), d_follow date)
     unfollow_user
     删除关注信息
 */
-create procedure update_unfollow_user(uid1 int(8), uid2 int(8))
+create procedure delete_unfollow_user(uid1 int(8), uid2 int(8))
     begin
         delete from relationship
         where userid1=uid1 and userid2=uid2;
