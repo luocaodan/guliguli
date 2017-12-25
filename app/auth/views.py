@@ -20,7 +20,11 @@ def login():
 @login_required
 def userinfo():
     #form = LoginForm()
-    return render_template('auth/userinfo.html')
+    u_id = current_user.get_id()
+    user = None
+    if u_id is not None:
+        user = User.queryByUserid({'id': u_id}).getUserInfo()
+    return render_template('auth/userinfo.html', user=user)
 
 @auth.route('/api/login', methods=['POST', 'GET'])
 def apiLogin():
