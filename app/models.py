@@ -49,7 +49,7 @@ class User(UserMixin):
         oparameter = self.getUserParameter()
         oparameter.update(parameter)
         template = t_update_user
-        print oparameter
+        #print oparameter
         r = db.runInsertSql(template, oparameter)
         return r
     

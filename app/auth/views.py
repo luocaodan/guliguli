@@ -161,7 +161,7 @@ def apiGetFans():
         data = {}
         data['uid_2'] = '4'
         data['d_follow'] = '2017-12-12'
-
+        
         r = requests.post('http://127.0.0.1:5000/auth/api/getFans', data=data)
         print r.text
     '''
@@ -170,6 +170,31 @@ def apiGetFans():
         parameter['id'] = current_user.get_id()
         follows = User.getFans(parameter)
         return jsonify(follows)
+    return render_template('auth/login.html')
+
+@auth.route('/api/updateInfo', methods=['POST', 'GET'])
+@login_required
+def apiUpdateInfo():
+    '''
+    def test():
+        data = {}
+        data['nick'] = 'update user'
+        data['photo'] = '/static/image/no_photo.png'
+        data['signa'] = 'this is update info test'
+        r = requests.post('http://127.0.0.1:5000/auth/api/updateInfo', data=data)
+        print r.text
+    '''
+    if request.method == 'POST':
+        parameter = {}
+        parameter['id'] = current_user.get_id()
+        parameter['nick'] = request.form['nick']
+        parameter['photo'] = request.form['photo']
+        parameter['signa'] = request.form['signa']
+        user = User.queryByUserid({'id': parameter['id']})
+        r = user.updateUserInfo(parameter)
+        if r:
+            return jsonify(True)
+        return jsonify(False)
     return render_template('auth/login.html')
 
 '''

@@ -158,7 +158,7 @@ def runQuerySql(tmplate, parameters, num):
 @with_connection
 def runInsertSql(tmplate, parameters):
     for k, v in parameters.iteritems():
-        print parameters[k]
+        #print parameters[k]
         if isinstance(parameters[k],str):
             parameters[k] = parameters[k].replace("'","\\\'")
             parameters[k] = parameters[k].replace("\"","\\\"")
