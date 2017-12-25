@@ -23,10 +23,10 @@
     </div>
     <div class="sex">
         <label class="radio-inline left">
-            <input onfocus="resetSubmit()" type="radio" name="sex" id="option1" value="male" {% if user.sex == "male" %}checked{% endblock %}>男
+            <input onfocus="resetSubmit()" type="radio" name="sex" id="option1" value="male" {% if user.sex == "male" %}checked{% endif %}>男
         </label>
         <label class="radio-inline right">
-            <input onfocus="resetSubmit()" type="radio" name="sex" id="option2" value="female" {% if user.sex == "female" %}checked{% endblock %}>女
+            <input onfocus="resetSubmit()" type="radio" name="sex" id="option2" value="female" {% if user.sex == "female" %}checked{% endif %}>女
         </label>
     </div>
     <div class="form-group">
@@ -45,13 +45,14 @@
         var nickname = $("#nick").val();
         var signature = $("#sig").val();
         var sex = $("input:radio[name='sex']:checked").val();
-        $.post("/auth/api/update_info", {
+        $.post("/auth/api/updateInfo", {
             "nickname": nickname,
             "signature": signature,
             "sex": sex
         }, function(data) {
             if(data == "true") {
                 $("#submit").text("修改成功");
+                setTimeout("window.navigate('/space/{{ user.id }}')", 2000);
                 return;
             }
         });
