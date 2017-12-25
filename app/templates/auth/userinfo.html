@@ -15,12 +15,38 @@
     <div class="form-group">
         <label for="nickname" class="col-md=2 control-label">昵称</label>
         <div class="col-md-10">
-            <input type="text" class="form-control" id="nickname" name="nickname" placeholder="">
+            <input id="nick" type="text" class="form-control" id="nickname" name="nickname" placeholder="{{ user.nickname }}" onkeydown="if(event.keyCode==13){$('#submit').click();return false;}">
         </div>
     </div>
     <div class="form-group">
-        <label for=""
+        <label class="form-label reg-label">性别</label>
+    </div>
+    <div class="sex">
+        <label class="radio-inline left">
+            <input onfocus="resetSubmit()" type="radio" name="sex" id="option1" value="male" {% if user.sex == "male" %}checked{% endblock %}>男
+        </label>
+        <label class="radio-inline right">
+            <input onfocus="resetSubmit()" type="radio" name="sex" id="option2" value="female" {% if user.sex == "female" %}checked{% endblock %}>女
+        </label>
+    </div>
+    <div class="form-group">
+        <input id="sig" type="text" onfocus="resetSubmit()" name="signature" onkeydown="if(event.keyCode==13){$('#submit').click();return false;}" class="form-control reg-input" placeholder="{{ user.signature }}">
+    </div>
+    <div class="form-group">
+        <button id="submit" type="button" class="btn-register" onclick="submit()">确认修改</button>
     </div>
 </form>
+
+<script>
+    function resetSubmit() {
+        $("#submit").text("确认修改");
+    }
+    function submit() {
+        var nickname = $("#nick").val();
+        var signature = $("#sig").val();
+        var sex = $("input:radio[name='sex']:checked").val();
+        
+    }
+</script>
 
 {% endblock %}
