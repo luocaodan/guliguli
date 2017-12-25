@@ -16,6 +16,12 @@ def login():
         return redirect(request.args.get('next') or url_for('main.home_page'))
     return render_template('auth/login.html')
 
+@auth.route('/userinfo', methods=['POST', 'GET'])
+@login_required
+def userinfo():
+    #form = LoginForm()
+    return render_template('auth/userinfo.html')
+
 @auth.route('/api/login', methods=['POST', 'GET'])
 def apiLogin():
     if request.method == 'POST':
