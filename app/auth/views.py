@@ -295,7 +295,6 @@ def apiUpdateInfo():
     return render_template('auth/login.html')
 
 @auth.route('/api/deleteUser', methods=['POST', 'GET'])
-@login_required
 def apiDeleteUser():
     if request.method == 'POST':
         parameter = {}
