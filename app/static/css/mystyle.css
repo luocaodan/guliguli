@@ -309,3 +309,10 @@ option {
 }
 
 /* 作品页 */
+.follow {
+    border: 1px solid pink;
+    border-radius: 20px;
+    background-color: pink;
+    padding: 5px 10px;
+    margin-top: 25px;
+}

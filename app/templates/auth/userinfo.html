@@ -45,7 +45,16 @@
         var nickname = $("#nick").val();
         var signature = $("#sig").val();
         var sex = $("input:radio[name='sex']:checked").val();
-        
+        $.post("/auth/api/update_info", {
+            "nickname": nickname,
+            "signature": signature,
+            "sex": sex
+        }, function(data) {
+            if(data == "true") {
+                $("#submit").text("修改成功");
+                return;
+            }
+        });
     }
 </script>
 
