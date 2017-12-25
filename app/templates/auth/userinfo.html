@@ -11,49 +11,100 @@
 {% endblock %} 
 {% block content %}
 
-<form class="form-horizontal" role="form">
+<form class="form-horizontal update-info-form" role="form">
     <div class="form-group">
-        <label for="nickname" class="col-md=2 control-label">昵称</label>
+        <label for="nick" class="col-md-2 control-label">昵称</label>
         <div class="col-md-10">
-            <input id="nick" type="text" class="form-control" id="nickname" name="nickname" placeholder="{{ user.nickname }}" onkeydown="if(event.keyCode==13){$('#submit').click();return false;}">
+            <input id="nick" type="text" class="form-control" id="nickname" name="nickname" value="{{ user.nickname }}" onkeydown="if(event.keyCode==13){$('#submit').click();return false;}">
         </div>
     </div>
     <div class="form-group">
-        <label class="form-label reg-label">性别</label>
+        <label class="col-md-2 control-label">性别</label>
     </div>
     <div class="sex">
-        <label class="radio-inline left">
+        <label class="radio-inline sex-pos left">
             <input onfocus="resetSubmit()" type="radio" name="sex" id="option1" value="male" {% if user.sex == "male" %}checked{% endif %}>男
         </label>
-        <label class="radio-inline right">
+        <label class="radio-inline sex-pos right">
             <input onfocus="resetSubmit()" type="radio" name="sex" id="option2" value="female" {% if user.sex == "female" %}checked{% endif %}>女
         </label>
     </div>
     <div class="form-group">
-        <input id="sig" type="text" onfocus="resetSubmit()" name="signature" onkeydown="if(event.keyCode==13){$('#submit').click();return false;}" class="form-control reg-input" placeholder="{{ user.signature }}">
+        <label class="col-md-2 control-label">签名</label>
+        <div class="col-md-10">
+            <input id="sig" type="text" onfocus="resetSubmit()" name="signature" onkeydown="if(event.keyCode==13){$('#submit').click();return false;}" class="form-control reg-input" value="{{ user.signature }}">
+        </div>
     </div>
     <div class="form-group">
-        <button id="submit" type="button" class="btn-register" onclick="submit()">确认修改</button>
+        <label class="col-md-2 control-label">头像</label>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2">
+            <input id="up" class="file" accept="image/gif,image/jpeg,image/png" type="file">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2">
+            <button id="submit" type="button" class="btn-register btn-update-info" onclick="submitInfo()">确认修改</button>
+        </div>
     </div>
 </form>
 
 <script>
+    var photo = "{{ user.profile_photo }}";
     function resetSubmit() {
         $("#submit").text("确认修改");
     }
-    function submit() {
+    function submitInfo() {
         var nickname = $("#nick").val();
         var signature = $("#sig").val();
         var sex = $("input:radio[name='sex']:checked").val();
+        if(nickname == "") {
+            $("#submit").text("昵称不能为空");
+            return;
+        }
+        if(signature == "") {
+            $("#submit").text("签名不能为空");
+            return;
+        } 
+        if(sex == "") {
+            $("#submit").text("请选择性别");
+            return;
+        }
+        upload();
+        
         $.post("/auth/api/updateInfo", {
-            "nickname": nickname,
-            "signature": signature,
-            "sex": sex
+            "nick": nickname,
+            "signa": signature,
+            "sex": sex,
+            "photo": photo
         }, function(data) {
             if(data == "true") {
                 $("#submit").text("修改成功");
                 setTimeout("window.navigate('/space/{{ user.id }}')", 2000);
                 return;
+            }
+        });
+    }
+
+    function upload() {
+        var files = $("#up").prop("files");
+        if(files.length === 0) {
+            return;
+        }
+        var data = new FormData();
+        data.append("file", files[0]);
+
+        $.ajax({
+            url: "/auth/api/uploads",
+            type: "POST",
+            data: data,
+            async: false,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                photo = data;
             }
         });
     }
