@@ -188,7 +188,10 @@ class Works():
         workInfo['u_id'] = r[1]
         workInfo['w_name'] = r[2]
         workInfo['cont'] = r[3]
-        workInfo['img'] =json.loads(r[4])
+        try:
+            workInfo['img'] =json.loads(r[4])
+        except:
+            workInfo['img'] = r[4]
         workInfo['d_post'] = r[5]
         workInfo['p_id'] = p_name[r[6]]
         return workInfo
