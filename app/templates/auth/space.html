@@ -39,6 +39,15 @@
                 "d_follow": d_follow
             }, function(data) {
                 $("#follow-info").text("取消关注");
+                var fan = parseInt($("#fan-num").text());
+                fan++;
+                $("#fan-num").text(fan);
+                var own = "{{ user.own }}";
+                if(own == "True") {
+                    var follow = parseInt($("#follow-num").text());
+                    follow++;
+                    $("#follow-num").text(follow); 
+                }
             })
         }
         function unfollow() {
@@ -52,6 +61,15 @@
                 "d_follow": d_follow
             }, function(data) {
                 $("#follow-info").text("关注");
+                var fan = parseInt($("#fan-num").text());
+                fan--;
+                $("#fan-num").text(fan);
+                var own = "{{ user.own }}";
+                if(own == "True") {
+                    var follow = parseInt($("#follow-num").text());
+                    follow--;
+                    $("#follow-num").text(follow); 
+                }
             }) 
         }
     </script>
@@ -99,7 +117,7 @@
                         <label>关注</label>
                     </div>
                     <div class="col-md-8 detail-info">
-                        <label>{{ user.follow }}</label>
+                        <label id="follow-num">{{ user.follow }}</label>
                     </div>
                 </div>
                 <div class="row detail-entry">
@@ -107,7 +125,7 @@
                         <label>粉丝</label>
                     </div>
                     <div class="col-md-8 detail-info">
-                        <label>{{ user.fans }}</label>
+                        <label id="fan-num">{{ user.fans }}</label>
                     </div>
                 </div>
             </div>
