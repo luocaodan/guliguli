@@ -81,6 +81,10 @@ def logout():
 @login_required
 def space(u_id):
     user = User.queryByUserid({'id': u_id}).getUserInfo()
+    if user['id'] == current_user.get_id():
+        user['own'] = True
+    else:
+        user['own'] = False
     return render_template('auth/space.html', user=user)
 
 @auth.route('/api/hasFollow', methods=['POST', 'GET'])
