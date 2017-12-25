@@ -81,7 +81,7 @@ def logout():
 @login_required
 def space(u_id):
     user = User.queryByUserid({'id': u_id}).getUserInfo()
-    if user.id == current_user.get_id():
+    if current_user.get_id() is not None and int(user.id) == int(current_user.get_id()):
         user.own = True
     else:
         user.own = False
