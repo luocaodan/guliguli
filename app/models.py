@@ -337,8 +337,9 @@ class Manager(UserMixin):
     
     @staticmethod
     def queryAllUser():
+        parameter = {}
         template = t_query_alluser
-        l = db.runQuerySql(template, parameter, 1)
+        l = db.runQuerySql(template, parameter, 2)
         userList = []
         if l is None:
             return userList
