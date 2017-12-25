@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link href="/static/css/dropzone.css" rel="stylesheet"> 
+{{ super() }}
+<script src="/static/js/dropzone.js"></script>
+
+{% endblock %} 
+{% block title %} 
+修改个人资料
+{% endblock %} 
+{% block content %}
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="nickname" class="col-md=2 control-label">昵称</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" id="nickname" name="nickname" placeholder="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for=""
+    </div>
+</form>
+
+{% endblock %}

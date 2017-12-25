@@ -247,6 +247,10 @@ option {
     padding: 5px 10px;
 }
 
+.navbar-nav li .avtar {
+    padding: 0 0;
+}
+
 
 
 /* 上传作品部分 覆盖dropzone.css */
@@ -268,4 +272,35 @@ option {
     margin-right: 25px;
     cursor: pointer;
     color: #25c6ff;
+}
+
+/* 用户主页 */
+.profile-info {
+    margin: 50px 0 0 20px;
+}
+.profile-photo {
+    z-index: 4;
+    border: 4px solid #fff;
+    border-radius: 8px;
+    width: 168px;
+    height: 168px;
+}
+
+.detail {
+    font-size: 20px;
+    padding-left: 50px;
+    padding-top: 20px;
+}
+
+.detail-title {
+    margin-right: 80px;
+}
+
+.detail-entry {
+    padding: 30px 0;
+    border-bottom: 1px solid #ebeef5;
+}
+
+.detail-info label {
+    font-weight: 400;
 }
