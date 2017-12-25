@@ -316,7 +316,7 @@ class Activity():
         return activityList
         
 
-class Manager():
+class Manager(UserMixin):
     def __init__(self, userid, username, password):
         self.id = userid
         self.name = username
