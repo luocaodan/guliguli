@@ -4,14 +4,17 @@
 {% block content %}
 <div class="row works">
     <div class="col-md-4 user-profile">
-        {{ works.userid }}
+        <img class="works-profile-photo" src="{{ user.profile_photo }}">
+        {{ user.nickname }}
     </div>
     <div class="col-md-8 works-image">
         <h2>{{ works.works_name }}</h2>
         <p>{{ works.content }}</p>
         <label class="w-plate">{{ works.plateid }}</label>
         <ul id="w-list">
-
+            {% for w_img in works.image %}
+                <li><img src="{{ w_img }}"></li>
+            {% endfor %}
         </ul>
         
     </div>
@@ -19,6 +22,9 @@
 <div class="row comment">
 
 </div>
+<script>
+
+</script>
 <p>worksid: {{ works.worksid }}</p>
 <p>userid: {{ works.userid }}</p>
 <p>works_name: {{ works.works_name }}</p>
