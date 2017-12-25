@@ -16,7 +16,7 @@
     <body>
         <div id="app" class="login-form">
             <div class="content">
-                <div id="login" class="login-form">
+                <div id="login">
                     <img class="logo" src="/static/image/admin.png">
                     <form class="from-horizontal" role="form" method="post">
                         <div class="form-group">
@@ -64,7 +64,7 @@
                         return;
                     }
                     // ajax提交
-                    $.post("/auth/api/login", {
+                    $.post("/auth/api/adminLogin", {
                         "username": this.username,
                         "password": password_md5
                     }, function(data) {
