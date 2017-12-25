@@ -175,6 +175,21 @@ class Works():
         self.date_post = date_post
         self.plateid = plateid
     
+    def getWorksInfo(self):
+        p_name = [u'手绘', u'板绘', u'PS', u'厚涂', u'水彩']
+        workInfo = {}
+        workInfo['w_id'] = self.worksid
+        workInfo['u_id'] = self.userid
+        workInfo['w_name'] = self.works_name
+        workInfo['cont'] = self.content
+        try:
+            workInfo['img'] =json.loads(self.image)
+        except:
+            workInfo['img'] = self.image
+        workInfo['d_post'] = self.date_post
+        workInfo['p_id'] = p_name[self.plateid]
+        return workInfo
+
     @staticmethod
     def queryWorks(parameter):
         tamplate = t_query_works
@@ -204,11 +219,15 @@ class Works():
         return r
     
     @staticmethod
-    def get_nworks(n):
+    def get_nworks(parameter):
+        template = t_query_nworks
+        l = db.runQuerySql(template, parameter, 2)
         res = []
-        cur = []
-        for r in cur:
-            res.append(Works(r[0], r[1], r[2], r[3], r[4], r[5], r[7]))
+        if l is None:
+            return res
+        for r in l:
+            w = Works(r[0], r[1], r[2], r[3], r[4], r[5], r[7])
+            res.append(w.getWorksInfo())
         return res
 
 class Plate():
@@ -258,17 +277,44 @@ class Comment():
         return r
 
 class Activity():
-    def __init__(self, activityid, content, date_release):
-        self.activityid = activityid
-        self.content = content
-        self.date_release = date_release
+    def __init__(self, activityid, content, date_release, image):
+        self.a_id = activityid
+        self.cont = content
+        self.d_release = date_release
+        self.img = image
     
-    def signActivity(self):
-        pass
+    @staticmethod
+    def hasSignActivity(parameter):
+        template = t_query_sign_ac
+        r = db.runQuerySql(template, parameter)
+        if r[0] == 1:
+            return False
+        return True
 
     @staticmethod
-    def queryActivity(commentid):
-        pass
+    def signActivity(parameter):
+        template = t_insert_sign_ac
+        r = db.runInsertSql(template, parameter)
+        return r
+
+    @staticmethod
+    def signActivity(parameter):
+        template = t_delete_sign_ac
+        r = db.runInsertSql(template, parameter)
+        return r
+
+    @staticmethod
+    def queryActivity(parameter):
+        template = t_query_nactivity
+        l = db.runQuerySql(template, 2)
+        activityList = []
+        if l is None:
+            return activityList
+        for r in l:
+            a = Activity(r[0], r[1], r[2], r[3])
+            activityList.append(a)
+        return activityList
+        
 
 class Manager():
     def __init__(self, userid, username, password):

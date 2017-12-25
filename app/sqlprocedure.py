@@ -33,7 +33,12 @@ t_query_nactivity = u"call query_nactivity({n})"
 
 t_insert_activity = u"call insert_activity('{cont}', '{d_release})"
 
-t_update_sign_ac = u"call update_sign_ac({a_id}, {u_id}, '{d_sign}')"
+t_insert_sign_ac = u"call insert_sign_ac({a_id}, {u_id}, '{d_sign}')"
+
+t_query_sign_ac = u"call query_sign_ac({a_id}, {u_id})"
+
+t_delete_sign_ac = u"call delete_sign_ac({a_id}, {u_id})"
+
 
 #comment
 t_query_comment = u"call query_comment({w_id})"

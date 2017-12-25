@@ -1,10 +1,10 @@
-from flask import render_template, session, redirect, url_for,flash, current_app
+from flask import render_template, session, redirect, url_for,flash, current_app, request, make_response, jsonify
 from datetime import datetime
 from . import main
 from .forms import NameForm
 from flask_login import login_user, login_required, logout_user, current_user
 #from .. import db
-#from ..models import User
+from ..models import User, Works, Activity
 from ..email import send_email
 #from .. import mongo
 import random
@@ -19,4 +19,50 @@ def home_page():
     u_id = current_user.get_id()
     if u_id is not None:
         user = User.queryByUserid({'id': u_id}).getUserInfo()
-    return render_template('index.html', user=user)
+    worksList = Works.get_nworks({'n': 6})
+    activityList = Activity.queryActivity({'n': 6})
+    return render_template('index.html', user=user, worksList=worksList, activityList=activityList)
+
+@main.route('/api/hasSignActivity', methods=['POST', 'GET'])
+@login_required
+def apiHasSignActivity():
+    '''
+    def test():
+        data = {}
+        data['u_id'] = '4'
+        data['d_sign'] = '2017-12-12'
+
+        r = requests.post('http://127.0.0.1:5000//api/hasSignActivity', data=data)
+        print r.text
+    '''
+    if request.method == 'POST':
+        parameter = {}
+        parameter['u_id'] = current_user.get_id()
+        parameter['a_id'] = request.form['a_id']
+        parameter['d_sign'] = request.form['d_sign']
+        r = Activity.hasSignActivity(parameter)
+        return jsonify(r)
+    return render_template('index.html')
+
+@main.route('/api/signActivity', methods=['POST', 'GET'])
+@login_required
+def apiSignActivity():
+    '''
+    def test():
+        data = {}
+        data['u_id'] = '4'
+        data['d_sign'] = '2017-12-12'
+
+        r = requests.post('http://127.0.0.1:5000//api/signActivity', data=data)
+        print r.text
+    '''
+    if request.method == 'POST':
+        parameter = {}
+        parameter['u_id'] = current_user.get_id()
+        parameter['a_id'] = request.form['a_id']
+        parameter['d_sign'] = request.form['d_sign']
+        r = Activity.hasSignActivity(parameter)
+        if not r:
+            r = Activity.signActivity(parameter)
+        return make_response('0', 200)
+    return render_template('auth/login.html')

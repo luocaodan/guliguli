@@ -233,10 +233,30 @@ create procedure delete_unfollow_user(uid1 int(8), uid2 int(8))
     sign_ac
     添加参加活动信息
 */
-create procedure update_sign_ac(a_id int(8), u_id int(8), d_sign date)
+create procedure insert_sign_ac(a_id int(8), u_id int(8), d_sign date)
     begin
         insert into sign_activity(activityid, userid, date_sign)
         values(a_id, u_id, d_sign);
+    end//
+
+/*
+    sign_ac
+    添加参加活动信息
+*/
+create procedure query_sign_ac(a_id int(8), u_id int(8))
+    begin
+        select count(*) from sign_activity
+        where activityid=a_id and userid=u_id;
+    end//
+
+/*
+    sign_ac
+    添加参加活动信息
+*/
+create procedure delete_sign_ac(a_id int(8), u_id int(8))
+    begin
+        delete from sign_activity
+        where activityid=a_id and userid=u_id;
     end//
 
 /*
@@ -259,16 +279,6 @@ create procedure insert_comment(
     添加活动信息
 */
 create procedure insert_activity(cont varchar(512), d_release date, img varchar(256))
-    begin
-        insert into activity(content, date_release, image)
-        values(cont, d_release, img);
-    end//
-
-/*
-    add_activity
-    添加活动信息
-*/
-create procedure query_activity(cont varchar(512), d_release date, img varchar(256))
     begin
         insert into activity(content, date_release, image)
         values(cont, d_release, img);
