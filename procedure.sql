@@ -23,7 +23,16 @@ create procedure query_user_userid(id int(8))
         select * from users 
         where userid=id;
     end//
-    
+
+/*
+    query_by_username (传入用户名)
+    根据用户名查找用户
+*/
+create procedure query_alluser()
+    begin
+        select * from users;
+    end//
+
 /*
     find_user (传入用户名)
     检查用户是否存在
@@ -81,7 +90,17 @@ create procedure update_user(
        set password = pwd, nickname=nick, profile_photo=photo, date_register=reg_date, signature=signa, follow=fol, fans=fan, sex=sex
        where userid=u_id;
     end//    
-    
+
+/*
+    query_by_username (传入用户名)
+    根据用户名查找用户
+*/
+create procedure delete_user(u_id int(8))
+    begin
+        delete from users 
+        where userid=u_id;
+    end//
+
 /*
     find_user (传入用户名)
     检查用户是否存在
@@ -139,7 +158,7 @@ create procedure query_comment(w_id int(8))
     login_admin
     管理员登录
 */
-create procedure login_admin(name varchar(16), pwd char(32))
+create procedure query_admin(name varchar(16), pwd char(32))
     begin
         select * from manager
         where username=name and password=pwd;
@@ -239,10 +258,20 @@ create procedure insert_comment(
     add_activity
     添加活动信息
 */
-create procedure insert_activity(cont varchar(256), d_release date)
+create procedure insert_activity(cont varchar(512), d_release date, img varchar(256))
     begin
-        insert into activity(content, date_release)
-        values(cont, d_release);
+        insert into activity(content, date_release, image)
+        values(cont, d_release, img);
+    end//
+
+/*
+    add_activity
+    添加活动信息
+*/
+create procedure query_activity(cont varchar(512), d_release date, img varchar(256))
+    begin
+        insert into activity(content, date_release, image)
+        values(cont, d_release, img);
     end//
 
 /*

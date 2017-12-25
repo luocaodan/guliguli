@@ -2,7 +2,7 @@
 from flask import render_template, redirect, request, url_for, flash, make_response, current_app, jsonify
 from flask_login import login_user, login_required, logout_user, current_user
 from . import auth
-from ..models import User
+from ..models import User, Manager, Works
 from ..email import send_email
 from .forms import LoginForm, RegistrationForm
 from app import db
@@ -37,6 +37,25 @@ def login():
         return redirect(request.args.get('next') or url_for('main.home_page'))
     return render_template('auth/login.html')
 
+@auth.route('/adminLogin', methods=['POST', 'GET'])
+def adminLogin():
+    #form = LoginForm()
+    if request.method == 'POST':
+        parameter = {}
+        parameter['name'] = request.form['username']
+        parameter['pwd'] = request.form['password']
+        admin = Manager.queryAdmin(parameter)
+        if admin is None:
+            return make_response('1', 200)
+        if admin is not None and admin.verifyPassword(parameter['pwd']):
+            login_user(admin, True)
+            userList = admin.queryAllUser()
+            current_app.logger.info('login user %s' % parameter['name'])
+            return render_template('auth/manager.html', userList=userList)
+        resp = make_response('2', 200)
+        return resp
+    return render_template('auth/adminLogin.html')
+
 @auth.route('/userinfo', methods=['POST', 'GET'])
 @login_required
 def userinfo():
@@ -63,6 +82,23 @@ def apiLogin():
         resp = make_response('2', 200)
         return resp
     return render_template('auth/login.html')
+
+@auth.route('/api/adminLogin', methods=['POST', 'GET'])
+def apiadminLogin():
+    if request.method == 'POST':
+        parameter = {}
+        parameter['name'] = request.form['username']
+        parameter['pwd'] = request.form['password']
+        admin = Manager.queryAdmin(parameter)
+        if admin is None:
+            return make_response('1', 200)
+        if admin is not None and admin.verifyPassword(parameter['pwd']):
+            login_user(admin, True)
+            current_app.logger.info('login user %s' % parameter['name'])
+            return make_response('0', 200)
+        resp = make_response('2', 200)
+        return resp
+    return render_template('auth/adminLogin.html')
 
 @auth.route('/register', methods=['POST', 'GET'])
 def register():
@@ -255,6 +291,19 @@ def apiUpdateInfo():
         user = User.queryByUserid({'id': parameter['id']})
         r = user.updateUserInfo(parameter)
         return jsonify(True)
+        #return jsonify(False)
+    return render_template('auth/login.html')
+
+@auth.route('/api/deleteUser', methods=['POST', 'GET'])
+@login_required
+def apiDeleteUser():
+    if request.method == 'POST':
+        parameter = {}
+        parameter['id'] = request.form['id']
+        r = Manager.deleteUser(parameter)
+        if r:
+            return jsonify(True)
+        return jsonify(False)
         #return jsonify(False)
     return render_template('auth/login.html')
 
