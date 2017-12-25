@@ -270,6 +270,42 @@ class Activity():
     def queryActivity(commentid):
         pass
 
+class Manager():
+    def __init__(self, userid, username, password):
+        self.id = userid
+        self.name = username
+        self.pwd = password
+    
+    def verifyPassword(self, pwd):
+        if pwd == self.pwd:
+            return True
+        return False
+
+    @staticmethod
+    def queryAdmin(parameter):
+        template = t_query_admin
+        r = db.runQuerySql(template, parameter, 1)
+        if r is None:
+            return None
+        return Manager(r[0], r[1], r[2])
+    
+    @staticmethod
+    def queryAllUser():
+        template = t_query_alluser
+        l = db.runQuerySql(template, parameter, 1)
+        userList = []
+        if l is None:
+            return userList
+        for r in l:
+            u = User(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], r[8], r[9], r[10])
+            userList.append(u)
+        return userList
+
+    @staticmethod
+    def deleteUser(parameter):
+        template = t_delete_user
+        r = db.runInsertSql(template, parameter)
+        return r
 
 @login_manager.user_loader
 def load_user(userid):

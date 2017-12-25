@@ -3,12 +3,19 @@ t_query_user_username = u"call query_user_username('{name}')"
 t_query_user_userid = u"call query_user_userid({id})"
 t_query_countuser_username = u"call query_countuser_username('{name}')"
 
+t_query_alluser = u"call query_alluser()"
+
 t_insert_user = u"call insert_user('{name}', '{pwd}', '{nick}', '{photo}', '{birth}', '{reg_date}', '{signa}', {fol}, {fan}, '{sex}')"
 
 t_update_user = u"call update_user('{id}', '{pwd}', '{nick}', '{photo}', '{birth}', '{reg_date}', '{signa}', {fol}, {fan}, '{sex}')"
 
 t_query_follows = u"call query_follows({id})"
 t_query_fans = u"call query_fans({id})"
+
+t_delete_user = u"call delete_user({id})"
+
+#admin
+t_query_admin = u"call query_admin({name}, {pwd})"
 
 #relation
 t_query_relationship = u"call query_relationship({uid_1}, {uid_2})"

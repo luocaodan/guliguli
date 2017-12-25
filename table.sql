@@ -100,8 +100,9 @@ create table if not exists comment (
 */
 create table if not exists activity (
     activityid int(8) not null auto_increment,
-    content varchar(256) not null,
+    content varchar(512) not null,
     date_release date not null,
+    image varchar(256) not null,                 -- 作品图片url
     primary key(activityid),
     check(activityid > 0)
 )default charset=utf8;
