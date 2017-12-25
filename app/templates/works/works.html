@@ -8,7 +8,7 @@
         {{ user.nickname }}
     </div>
     <div class="col-md-8 works-image">
-        <h2>{{ works.works_name }}</h2>
+        <h2>{{ works.w_name }}</h2>
         <p>{{ works.content }}</p>
         <label class="w-plate">{{ works.plateid }}</label>
         <ul id="w-list">
@@ -25,11 +25,4 @@
 <script>
 
 </script>
-<p>worksid: {{ works.worksid }}</p>
-<p>userid: {{ works.userid }}</p>
-<p>works_name: {{ works.works_name }}</p>
-<p>content: {{ works.content }}</p>
-<p>image: {{ works.image }}</p>
-<p>date_post: {{ works.date_post }}</p>
-<p>plateid: {{ works.palteid }}</p>
 {% endblock %}
