@@ -17,7 +17,7 @@ from werkzeug import secure_filename
 
 def create_avatar(image):
     try:
-        base_width = 80
+        base_width = 140
         img = Image.open(os.path.join(current_app.config['UPLOADED_AVATAR_DEST'], image))
         w_percent = (base_width / float(img.size[0]))
         h_size = int((float(img.size[1]) * float(w_percent)))
@@ -254,9 +254,8 @@ def apiUpdateInfo():
         parameter['sex'] = request.form['sex']
         user = User.queryByUserid({'id': parameter['id']})
         r = user.updateUserInfo(parameter)
-        if r:
-            return jsonify(True)
-        return jsonify(False)
+        return jsonify(True)
+        #return jsonify(False)
     return render_template('auth/login.html')
 
 @auth.route('/api/uploads', methods = ['GET', 'POST'])
