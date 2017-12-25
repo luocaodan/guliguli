@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="/static/js/vue.js"></script>
+        <script src="/static/js/md5.js"></script>
+        <script src="/static/js/jquery.min.js"></script>
+        <script href="/static/js/bootstrap.min.js"></script>
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/css/bootstrap-theme.css" rel="stylesheet">
+        <link href="/static/css/mystyle.css" rel="stylesheet">
+
+        <title>管理</title>
+    </head>
+
+    <body>
+        <div class="container manage">
+            <div class="row">
+                <div class="col-md-2">
+                    <label>用户id</label>
+                </div>
+                <div class="col-md-2">
+                    <label>用户名</label>
+                </div>
+                <div class="col-md-2">
+                    <label>昵称</label>
+                </div>
+                <div class="col-md-2">
+                    <label>性别</label>
+                </div> 
+                <div class="col-md-2">
+                    <label>注册日期</label>
+                </div>
+            </div>
+            {% for user in user_list %}
+            <div id="{{ user.id }}" class="row">
+                <div class="col-md-2">
+                    <label>{{ user.id }}</label>
+                </div>
+                <div class="col-md-2">
+                    <label>{{ user.username }}</label>
+                </div>
+                <div class="col-md-2">
+                    <label>{{ user.nickname }}</label>
+                </div>
+                <div class="col-md-2">
+                    <label>{{ user.sex }}</label>
+                </div> 
+                <div class="col-md-2">
+                    <label>{{ user.reg_date }}</label>
+                </div>
+                <div class="col-md-2">
+                    <button id="b-{{ user.id }}" type="button" class="btn btn-danger" onclick="delete_user('{{ user.id }}')">删除</button>
+                </div>
+            </div> 
+        </div>
+        <script>
+            function delete_user(id) {
+                $.post("/auth/api/deleteUser", {"id": id}, function(data) {
+                    if(JSON.parse(data) === true) {
+                        $("#"+id).hide();
+                    }
+                    else {
+                        $("#b-"+id).text("删除失败");
+                    }
+                }, "text");
+            }
+        </script>
+    </body>
