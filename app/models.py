@@ -112,6 +112,8 @@ class User(UserMixin):
         template = t_query_follows
         r = db.runQuerySql(template, parameter, 2)
         folist = []
+        if r is None:
+             return folist
         for item in r:
             parameter = {}
             parameter['id'] = item[0]
@@ -131,6 +133,8 @@ class User(UserMixin):
         template = t_query_fans
         r = db.runQuerySql(template, parameter, 2)
         fanlist = []
+        if r is None:
+            return fanlist
         for item in r:
             parameter = {}
             parameter['id'] = item[0]
@@ -189,7 +193,7 @@ class Works():
     @staticmethod
     def get_nworks(n):
         res = []
-        cur = db.get_nworks(n)
+        cur = []
         for r in cur:
             res.append(Works(r[0], r[1], r[2], r[3], r[4], r[5], r[7]))
         return res
@@ -215,8 +219,30 @@ class Comment():
         self.date_post = date_post
     
     @staticmethod
-    def queryComment(commentid):
-        pass
+    def queryComment(parameter):
+        template = t_query_comment
+        r = db.runQuerySql(template, parameter, 2)
+        commentList = []
+        if r is None:
+            return commentList
+        for item in r:
+            com = {}
+            com['c_id'] = item[0]
+            com['txt'] = item[1]
+            com['w_id'] = item[2]
+            com['u_id'] = item[3]
+            com['d_post'] = item[4]
+            com['nick'] = item[5]
+            com['photo'] = item[6]
+            com['sex'] = item[7]
+            commentList.append(com)
+        return commentList
+
+    @staticmethod
+    def insertComment(parameter):
+        template = t_insert_comment
+        r = db.runInsertSql(template, parameter)
+        return r
 
 class Activity():
     def __init__(self, activityid, content, date_release):

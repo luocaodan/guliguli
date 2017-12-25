@@ -31,7 +31,7 @@ t_update_sign_ac = "call update_sign_ac({a_id}, {u_id}, '{d_sign}')"
 #comment
 t_query_comment = "call query_comment({w_id})"
 
-t_insert_comment = "call insert_comment({c_id}, '{txt}', {w_id}, {u_id}, '{d_post})"
+t_insert_comment = "call insert_comment('{txt}', {w_id}, {u_id}, '{d_post}')"
 
 #plate
 t_insert_plate = "call insert_plate('{intro}')"

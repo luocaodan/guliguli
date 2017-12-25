@@ -129,8 +129,10 @@ create procedure query_works(w_id int(8))
 */
 create procedure query_comment(w_id int(8))
     begin
-        select * from comment
-        where worksid=w_id;
+        select commentid, text, worksid, comment.userid, date_post, nickname, profile_photo, sex 
+        from comment, users 
+        where users.userid = comment.userid and worksid=w_id
+        order by commentid;
     end//
 
 /*
@@ -222,16 +224,15 @@ create procedure update_sign_ac(a_id int(8), u_id int(8), d_sign date)
     add_comment
     添加评论
 */
-create procedure insert_comment(
-    c_id int(8), 
+create procedure insert_comment( 
     txt varchar(128), 
     w_id int(8),
     u_id int(8),
     d_post date
     )
     begin
-        insert into comment(commentid, text, worksid, userid, date_post)
-        values(c_id, txt, w_id, u_id, d_post);
+        insert into comment(text, worksid, userid, date_post)
+        values(txt, w_id, u_id, d_post);
     end//
 
 /*
