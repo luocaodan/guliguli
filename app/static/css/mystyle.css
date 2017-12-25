@@ -337,3 +337,14 @@ option {
 .file {
     margin: auto;
 }
+
+/* 管理员管理界面 */
+.manage {
+    width: 60%;
+    margin-top: 100px;
+}
+
+.manage .row {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebeef5;
+}

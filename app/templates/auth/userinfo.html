@@ -79,12 +79,10 @@
             "sex": sex,
             "photo": photo
         }, function(data) {
-            if(data == "true") {
-                $("#submit").text("修改成功");
-                setTimeout("window.navigate('/space/{{ user.id }}')", 2000);
-                return;
-            }
-        });
+            $("#submit").text("修改成功");
+            setTimeout("jump()", 1000);
+            return;
+        }, "text");
     }
 
     function upload() {
@@ -107,6 +105,9 @@
                 photo = data;
             }
         });
+    }
+    function jump() {
+        window.location.href = "http://localhost:5000/auth/space/{{ user.id }}"
     }
 </script>
 
