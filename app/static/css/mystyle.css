@@ -316,3 +316,24 @@ option {
     padding: 5px 10px;
     margin-top: 25px;
 }
+
+
+/* 修改用户信息 */
+.update-info-form {
+    width: 40%;
+    margin: auto auto;
+    padding: 40px 0;
+}
+
+.sex-pos {
+    color: #000;
+}
+
+.btn-update-info {
+    width: 50%;
+    margin: auto auto;
+}
+
+.file {
+    margin: auto;
+}
