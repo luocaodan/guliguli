@@ -203,6 +203,18 @@ create procedure insert_works(
     end//
 
 /*
+    insert_works
+    添加作品信息
+*/
+create procedure query_lastworks()
+    begin
+        select * from works
+        order by worksid 
+        limit 1;
+    end//
+
+
+/*
     follow_user
     添加关注信息
 */

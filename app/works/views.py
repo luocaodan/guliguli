@@ -73,7 +73,8 @@ def post():
         parameter['d_post'] = request.form['d_post']
         parameter['p_id'] = request.form['p_id']
         r = Works.insertWorks(parameter)
-        redirect(url_for('works.worksPage', w_id = r))
+        #return jsonify(r)
+        return redirect(url_for('works.worksPage', w_id = r))
     return render_template('works/post.html', user=user)
 
 @works.route('/api/uploads', methods = ['GET', 'POST'])

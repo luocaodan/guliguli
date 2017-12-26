@@ -30,6 +30,8 @@ t_insert_works = u"call insert_works({u_id}, '{w_name}', '{cont}', '{img}', '{d_
 
 t_query_usersworks = u"call query_usersworks({u_id})"
 
+t_query_lastworks = u"call query_lastworks()"
+
 #activity
 t_query_nactivity = u"call query_nactivity({n})"
 

@@ -213,10 +213,12 @@ class Works():
     
     @staticmethod
     def insertWorks(parameter):
-        tamplate = t_insert_works
+        template = t_insert_works
         #r = db.insert_works(u_id, w_name, cont, img, d_post, p_id)
-        r = db.runInsertSql(tamplate, parameter)
-        return r
+        r = db.runInsertSql(template, parameter)
+        template = t_query_lastworks
+        r = db.runInsertSql(template, parameter)
+        return r[0]
     
     @staticmethod
     def get_nworks(parameter):
