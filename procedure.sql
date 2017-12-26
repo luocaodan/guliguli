@@ -209,7 +209,7 @@ create procedure insert_works(
 create procedure query_lastworks()
     begin
         select * from works
-        order by worksid 
+        order by worksid desc
         limit 1;
     end//
 
