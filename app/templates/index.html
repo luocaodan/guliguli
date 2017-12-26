@@ -2,6 +2,19 @@
 {% block title %}首页{% endblock %}
 {% block content %}
 
+<div class="row index-activity">
+    <h2>最新活动</h2>
+    <div class="col-sm-0 col-md-16">
+        <div class="thumbnail">
+            <img src={{activityList[0].img}} width="100%" height="100%">
+            <div class="caption" >
+                <p>{{activityList[0].cont}}</p>
+                <small>活动日期: {{ activityList[0].d_release }}</small></br>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <h2>最新作品</h2>
     {% for works in worksList %}
@@ -13,21 +26,6 @@
                 <a href="/space/{{works.u_id}}"><p></p></a>   
                 <a href="/works/{{works.w_id}}" alt={{works.cont}}><p style="overflow:hidden;text-overflow:ellipsis;white-space: nowrap; ">{{works.cont}}</p></a>
             </div>
-            </div>
-    </div>
-    {% endfor %}
-</div>
-
-<div class="row index-activity">
-    <h2>最新活动</h2>
-    {% for activity in activityList %}
-    <div class="col-sm-0 col-md-16">
-            <div class="thumbnail">
-                <img src={{activity.img}} width="100%" height="100%">
-                <div class="caption" >
-                    <p>{{activity.cont}}</p>
-                    <small>活动日期: {{ activity.d_release }}</small></br>
-                </div>
             </div>
     </div>
     {% endfor %}
