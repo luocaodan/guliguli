@@ -23,9 +23,9 @@ def create_thumbnail(image):
         w_percent = (base_width / float(img.size[0]))
         h_size = int((float(img.size[1]) * float(w_percent)))
         img = img.resize((base_width, h_size), PIL.Image.ANTIALIAS)
-        img.save(os.path.join(current_app.config['THUMBNAIL_FOLDER'], image))
+        img.save(os.path.join(current_app.config['UPLOADED_PHOTOS_DEST'], image))
 
-        return os.path.join(current_app.config['THUMBNAIL_FOLDER'], image)
+        return True
 
     except:
         print traceback.format_exc()
@@ -84,8 +84,7 @@ def uploads():
             files = request.files['file']
             files.filename = secure_filename(files.filename)
             filename = photos.save(files)
-            th_name = create_thumbnail(filename)
-            return jsonify(photos.url(th_name))
+            return jsonify(photos.url(filename))
         except:
             c = []
             return jsonify(c)

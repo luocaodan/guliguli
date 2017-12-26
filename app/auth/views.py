@@ -21,6 +21,9 @@ def create_avatar(image):
         w_percent = (base_width / float(img.size[0]))
         h_size = int((float(img.size[1]) * float(w_percent)))
         img = img.resize((base_width, h_size), PIL.Image.ANTIALIAS)
+        y = int((h_size - base_width) / 2)
+        if y > 0:
+            img = img.corp((0, 0, base_width, y))
         img.save(os.path.join(current_app.config['UPLOADED_AVATAR_DEST'], image))
 
         return True
