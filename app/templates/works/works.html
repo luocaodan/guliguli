@@ -34,17 +34,70 @@
     <div class="row post-comment">
         <label class="comment-label">发表评论</label>
         <div class="row">
-            <textarea id="coment-text" class="form-control comment-textarea"></textarea>
+            <textarea id="comment-text" class="form-control comment-textarea"></textarea>
         </div>
         <div class="row">
-            <button type="button" class="comment-button" onclick="post_comment()">发表评论</button>
+            <button id="info" type="button" class="comment-button" onclick="post_comment()">发表评论</button>
         </div>
     </div>
-    <div class="row comment">
-
+    <div id="comment" class="comment">
+        <p><hr></P>
+        {% for comment in comments %}
+        <div class="row">
+            <div class="col-xs-3 col-md-1"><a href="/auth/space/{{ comment.u_id }}">
+                <img class="comment-photo" src="{{ comment.photo }}" width="64" height="64" ></a>
+            </div>
+            <div class="col-xs-9 col-md-10 comment-content">
+                <a href="/auth/space/{{ comment.u_id }}">{{ comment.nick }}:</a>
+                <p class="comment-txt"></br>{{ comment.txt }}</p>
+                <small class="comment-day">{{ comment.d_post }}</small></br>
+            </div>
+        </div>
+        <p><hr></P>
+        {% endfor %}
     </div>
 </div>
 <script>
+    function post_comment() {
+        var text = $("#comment-text").val();
+        var w_id = "{{ works.w_id }}";
+        var d = new Date();
+        var d_post = d.toLocaleDateString();
 
+        if(text == "") {
+            $("#info").text("评论不能为空");
+            setTimeout("$('#info').text('发送评论')", 1000);
+            return;
+        }
+
+        $.post("/works/api/postComment", {
+            "txt": text,
+            "w_id": w_id,
+            "d_post": d_post
+        }, function(data) {
+            if(JSON.parse(data) === true) {
+                $("#comment-text").val("");
+                $("#info").text("评论成功");
+
+                var content = 
+                    '<p><hr></P>\
+                    <div class="row">\
+                        <div class="col-xs-3 col-md-1"><a href="/auth/space/{{ user.id }}">\
+                            <img class="comment-photo" src="{{ user.profile_photo }}" width="64" height="64" ></a>\
+                        </div>\
+                        <div class="col-xs-9 col-md-10 comment-content">\
+                            <a href="/auth/space/{{ user.id }}">{{ user.nickname }}:</a>\
+                            <p class="comment-txt"></br>' + text + '</p>\
+                            <small class="comment-day">' + d_post.replace('/', '-') + '</small></br>\
+                        </div>\
+                    </div>';
+                $("#comment").prepend(content);
+                setTimeout("$('#info').text('发送评论')", 1000);
+            }
+            else {
+                $("#info").text("评论失败");
+            }
+        }, "text")
+    }
 </script>
 {% endblock %}

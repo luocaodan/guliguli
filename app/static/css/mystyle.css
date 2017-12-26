@@ -397,7 +397,7 @@ option {
 /* 评论 */
 .post-comment {
     width: 70%;
-    float: right;
+    margin-left: 22%;
     margin-right: 5%;
     margin-top: 50px; 
 }
@@ -435,4 +435,27 @@ textarea.comment-textarea {
 	background-image: none;
 	transition: 0.3s;
 	color: #28a745;
+}
+
+/* 评论列表 */
+.comment {
+    margin-top: 50px;
+    margin-left: 10%;
+}
+
+.comment-photo {
+    border-radius: 100%;
+}
+
+.comment-content {
+    margin-left: 20px;
+    padding-top: 5px;
+}
+
+.comment-txt {
+    margin-left: 10px;
+}
+
+.comment-day {
+    color: #999;
 }
