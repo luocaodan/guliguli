@@ -94,6 +94,10 @@
                     $("#info").text("请上传作品");
                     return;
                 }
+                if(img_arr.length > 10) {
+                    $("#info").text("最多上传10个作品");
+                    return;
+                }
                 var plate_id = $("input:radio[name='p_id']:checked").val();
                 if(!plate_id) {
                     $("#info").text("请选择板块");
