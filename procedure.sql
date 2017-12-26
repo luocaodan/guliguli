@@ -192,7 +192,7 @@ create procedure insert_works(
     u_id int(8), 
     w_name varchar(128), 
     cont varchar(512),
-    img varchar(256),
+    img varchar(512),
     d_post date,
     p_id int(8)
     )

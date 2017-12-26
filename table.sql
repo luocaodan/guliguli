@@ -68,7 +68,7 @@ create table if not exists works (
     userid int(8) not null,
     works_name varchar(128) not null,           -- 作品名
     content varchar(512) not null,              -- 作品描述
-    image varchar(256) not null,                 -- 作品图片url
+    image varchar(512) not null,                 -- 作品图片url
     date_post date not null,
     plateid int(8) not null,
     primary key(worksid),
