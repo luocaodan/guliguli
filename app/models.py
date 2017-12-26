@@ -187,7 +187,7 @@ class Works():
         except:
             workInfo['img'] = self.image
         workInfo['d_post'] = self.date_post
-        workInfo['p_id'] = p_name[self.plateid]
+        workInfo['p_id'] = p_name[self.plateid - 1]
         return workInfo
 
     @staticmethod
@@ -208,7 +208,8 @@ class Works():
         except:
             workInfo['img'] = r[4]
         workInfo['d_post'] = r[5]
-        workInfo['p_id'] = p_name[r[6]]
+        print r[6]
+        workInfo['p_id'] = p_name[r[6] - 1]
         return workInfo
     
     @staticmethod
