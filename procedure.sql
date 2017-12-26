@@ -118,7 +118,8 @@ create procedure query_relationship(uid_1 int(8), uid_2 int(8))
 create procedure query_nworks(n int) 
     begin
         select * from works
-        order by rand() limit n;
+        order by worksid desc 
+        limit n;
     end//
 
 /*
@@ -128,6 +129,7 @@ create procedure query_nworks(n int)
 create procedure query_usersworks(u_id int(8)) 
     begin
         select * from works
+        order by worksid desc
         where userid=u_id;
     end//
 
@@ -137,7 +139,9 @@ create procedure query_usersworks(u_id int(8))
 */
 create procedure query_nactivity(n int)
     begin
-        select * from activity limit n;
+        select * from activity 
+        order by actiivityid desc
+        limit n;
     end//
 
 /*
@@ -171,7 +175,7 @@ create procedure query_comment(w_id int(8))
         select commentid, text, worksid, comment.userid, date_post, nickname, profile_photo, sex 
         from comment, users 
         where users.userid = comment.userid and worksid=w_id
-        order by commentid;
+        order by commentid desc ;
     end//
 
 /*
