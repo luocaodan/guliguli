@@ -84,6 +84,7 @@ def uploads():
             files = request.files['file']
             files.filename = secure_filename(files.filename)
             filename = photos.save(files)
+            create_thumbnail(filename)
             return jsonify(photos.url(filename))
         except:
             c = []
