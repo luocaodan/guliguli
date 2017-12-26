@@ -129,6 +129,7 @@ create procedure query_nworks(n int)
 create procedure query_usersworks(u_id int(8)) 
     begin
         select * from works
+        order by worksid desc
         where userid=u_id;
     end//
 
@@ -174,7 +175,7 @@ create procedure query_comment(w_id int(8))
         select commentid, text, worksid, comment.userid, date_post, nickname, profile_photo, sex 
         from comment, users 
         where users.userid = comment.userid and worksid=w_id
-        order by commentid;
+        order by commentid desc ;
     end//
 
 /*
