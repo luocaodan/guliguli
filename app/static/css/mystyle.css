@@ -459,3 +459,17 @@ textarea.comment-textarea {
 .comment-day {
     color: #999;
 }
+
+/* 首页 */
+.activity {
+    padding: 0;
+}
+
+.a-img {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.a-content {
+    margin-left: 24px;
+}
