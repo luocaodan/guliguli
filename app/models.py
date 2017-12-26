@@ -217,7 +217,7 @@ class Works():
         #r = db.insert_works(u_id, w_name, cont, img, d_post, p_id)
         r = db.runInsertSql(template, parameter)
         template = t_query_lastworks
-        r = db.runInsertSql(template, parameter)
+        r = db.runQuerySql(template, parameter)
         return r[0]
     
     @staticmethod
