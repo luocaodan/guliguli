@@ -23,7 +23,7 @@ def create_avatar(image):
         img = img.resize((base_width, h_size), PIL.Image.ANTIALIAS)
         y = int((h_size - base_width) / 2)
         if y > 0:
-            img = img.corp((0, 0, base_width, y))
+            img = img.crop((0, y, base_width, y + base_width))
         img.save(os.path.join(current_app.config['UPLOADED_AVATAR_DEST'], image))
 
         return True
