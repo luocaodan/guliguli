@@ -304,9 +304,9 @@ class Activity():
         return r
 
     @staticmethod
-    def queryActivity(parameter):
+    def query_nActivity(parameter):
         template = t_query_nactivity
-        l = db.runQuerySql(template, 2)
+        l = db.runQuerySql(template, parameter, 2)
         activityList = []
         if l is None:
             return activityList
@@ -314,6 +314,15 @@ class Activity():
             a = Activity(r[0], r[1], r[2], r[3])
             activityList.append(a)
         return activityList
+
+    @staticmethod
+    def queryActivity(parameter):
+        template = t_query_activity
+        r = db.runQuerySql(template, parameter, 2)
+        if r is None:
+            return None
+        a = Activity(r[0], r[1], r[2], r[3])
+        return a
         
 
 class Manager(UserMixin):

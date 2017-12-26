@@ -31,7 +31,9 @@ t_insert_works = u"call insert_works({u_id}, '{w_name}', '{cont}', '{img}', '{d_
 #activity
 t_query_nactivity = u"call query_nactivity({n})"
 
-t_insert_activity = u"call insert_activity('{cont}', '{d_release})"
+t_insert_activity = u"call insert_activity('{cont}', '{d_release}', '{img}')"
+
+t_query_activity = u"call query_activity({a_id})"
 
 t_insert_sign_ac = u"call insert_sign_ac({a_id}, {u_id}, '{d_sign}')"
 
@@ -43,7 +45,7 @@ t_delete_sign_ac = u"call delete_sign_ac({a_id}, {u_id})"
 #comment
 t_query_comment = u"call query_comment({w_id})"
 
-t_insert_comment = u"call insert_comment('{txt}', {w_id}, {u_id}, '{d_post})"
+t_insert_comment = u"call insert_comment('{txt}', {w_id}, {u_id}, '{d_post}')"
 
 #plate
 t_insert_plate = u"call insert_plate('{intro}')"

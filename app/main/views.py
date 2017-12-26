@@ -20,8 +20,20 @@ def home_page():
     if u_id is not None:
         user = User.queryByUserid({'id': u_id}).getUserInfo()
     worksList = Works.get_nworks({'n': 6})
-    activityList = Activity.queryActivity({'n': 6})
+    activityList = Activity.query_nActivity({'n': 6})
     return render_template('index.html', user=user, worksList=worksList, activityList=activityList)
+
+@main.route('/activity/<a_id>')
+@login_required
+def activity(a_id):
+    user = None
+    u_id = current_user.get_id()
+    if u_id is not None:
+        user = User.queryByUserid({'id': u_id}).getUserInfo()
+    parameter = {}
+    parameter['a_id'] = a_id
+    act = Activity.queryActivity(parameter)
+    return render_template('/activity.html', user=user, act=act)
 
 @main.route('/api/hasSignActivity', methods=['POST', 'GET'])
 @login_required

@@ -131,6 +131,16 @@ create procedure query_nactivity(n int)
     end//
 
 /*
+    select_activity
+    活动页罗列活动(n个)
+*/
+create procedure query_activity(a_id int(8))
+    begin
+        select * from activity
+        where activityid=a_id;
+    end//
+
+/*
     works
     传入作品id
     返回作品信息
