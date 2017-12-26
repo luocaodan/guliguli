@@ -18,12 +18,17 @@ def create_avatar(image):
     try:
         base_width = 140
         img = Image.open(os.path.join(current_app.config['UPLOADED_AVATAR_DEST'], image))
+        w = img.size[0]
+        h = img.size[1]
+        if w > h:
+            x = int(float(w - h)/2)
+            img = img.crop((x, 0, x + h, h))
+        if w < h:
+            y = int(float(h - w)/2)
+            img = img.crop((0, y, w, y + w))
         w_percent = (base_width / float(img.size[0]))
         h_size = int((float(img.size[1]) * float(w_percent)))
         img = img.resize((base_width, h_size), PIL.Image.ANTIALIAS)
-        y = int((h_size - base_width) / 2)
-        if y > 0:
-            img = img.crop((0, y, base_width, y + base_width))
         img.save(os.path.join(current_app.config['UPLOADED_AVATAR_DEST'], image))
 
         return True
