@@ -30,8 +30,11 @@
                 <div class="col-md-2">
                     <label>注册日期</label>
                 </div>
+                <div class="col-md-2">
+                    <a href="/auth/api/logout">登出</a>
+                </div>
             </div>
-            {% for user in user_list %}
+            {% for user in userList %}
             <div id="{{ user.id }}" class="row">
                 <div class="col-md-2">
                     <label>{{ user.id }}</label>
@@ -46,18 +49,20 @@
                     <label>{{ user.sex }}</label>
                 </div> 
                 <div class="col-md-2">
-                    <label>{{ user.reg_date }}</label>
+                    <label>{{ user.date_register }}</label>
                 </div>
                 <div class="col-md-2">
                     <button id="b-{{ user.id }}" type="button" class="btn btn-danger" onclick="delete_user('{{ user.id }}')">删除</button>
                 </div>
             </div> 
+            {% endfor %}
         </div>
         <script>
             function delete_user(id) {
                 $.post("/auth/api/deleteUser", {"id": id}, function(data) {
+                    console.log(data);
                     if(JSON.parse(data) === true) {
-                        $("#"+id).hide();
+                        $("#"+id).hide(1000);
                     }
                     else {
                         $("#b-"+id).text("删除失败");
