@@ -6,28 +6,39 @@
 
 {% block title %}作品{% endblock %}
 {% block content %}
-<div class="work-page">
+<div class="work-page container">
     <div class="row works">
         <div class="col-md-4 user-profile">
-            <img class="works-profile-photo" src="{{ user.profile_photo }}">
-            {{ user.nickname }}
+            <div class="row">
+                <a href="/auth/space/{{ user.id }}"><img class="profile-photo" src="{{ user.profile_photo }}"></a>
+            </div>
+            <div class="row">
+                <label class="w-author">{{ user.nickname }}</label>
+            </div>
         </div>
         <div class="col-md-8 works-image">
-            <h2>{{ works.w_name }}</h2>
-            <p>{{ works.cont }}</p>
-            <label class="w-plate">{{ works.p_id }}</label>
+            <div class="row">
+                <h2 class="inline w-name">{{ works.w_name }}</h2>
+                <label class="inline plate w-plate">{{ works.p_id }}</label>
+            </div>
+            <div class="row w-cont">
+                <p>{{ works.cont }}</p>
+            </div>
             <ul id="w-list">
                 {% for w_img in works.img %}
-                    <li><img src="{{ w_img }}"></li>
+                    <img class="w-img" src="{{ w_img }}">
                 {% endfor %}
             </ul>
-            
         </div>
     </div>
     <div class="row post-comment">
         <label class="comment-label">发表评论</label>
-        <textarea id="coment-text" class="comment-textarea"></textarea>
-        <button type="button" class="comment-button" onclick="post_comment()">发表评论</button>
+        <div class="row">
+            <textarea id="coment-text" class="form-control comment-textarea"></textarea>
+        </div>
+        <div class="row">
+            <button type="button" class="comment-button" onclick="post_comment()">发表评论</button>
+        </div>
     </div>
     <div class="row comment">
 
