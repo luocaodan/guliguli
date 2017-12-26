@@ -162,8 +162,8 @@ def space(u_id):
         user.own = True
     else:
         user.own = False
-    workList = Works.get_usersworks({'u_id': u_id})
-    return render_template('auth/space.html', user=user, workList=workList)
+    worksList = Works.get_usersworks({'u_id': u_id})
+    return render_template('auth/space.html', user=user, worksList=worksList)
 
 @auth.route('/api/hasFollow', methods=['POST', 'GET'])
 @login_required

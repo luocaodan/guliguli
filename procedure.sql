@@ -118,7 +118,8 @@ create procedure query_relationship(uid_1 int(8), uid_2 int(8))
 create procedure query_nworks(n int) 
     begin
         select * from works
-        order by rand() limit n;
+        order by worksid desc 
+        limit n;
     end//
 
 /*
@@ -137,7 +138,9 @@ create procedure query_usersworks(u_id int(8))
 */
 create procedure query_nactivity(n int)
     begin
-        select * from activity limit n;
+        select * from activity 
+        order by actiivityid desc
+        limit n;
     end//
 
 /*
