@@ -226,7 +226,19 @@ class Works():
         if l is None:
             return res
         for r in l:
-            w = Works(r[0], r[1], r[2], r[3], r[4], r[5], r[7])
+            w = Works(r[0], r[1], r[2], r[3], r[4], r[5], r[6])
+            res.append(w.getWorksInfo())
+        return res
+
+    @staticmethod
+    def get_usersworks(parameter):
+        template = t_query_usersworks
+        l = db.runQuerySql(template, parameter, 2)
+        res = []
+        if l is None:
+            return res
+        for r in l:
+            w = Works(r[0], r[1], r[2], r[3], r[4], r[5], r[6])
             res.append(w.getWorksInfo())
         return res
 

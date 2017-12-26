@@ -117,8 +117,18 @@ create procedure query_relationship(uid_1 int(8), uid_2 int(8))
 */
 create procedure query_nworks(n int) 
     begin
-        select works_name, image from works
+        select * from works
         order by rand() limit n;
+    end//
+
+/*
+    select_works
+    首页罗列作品，随机选取作品中的n条记录
+*/
+create procedure query_usersworks(u_id int(8)) 
+    begin
+        select * from works
+        where userid=u_id;
     end//
 
 /*

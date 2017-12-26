@@ -14,7 +14,6 @@ import os
 from .. import avatar
 from werkzeug import secure_filename
 
-
 def create_avatar(image):
     try:
         base_width = 140
@@ -155,7 +154,8 @@ def space(u_id):
         user.own = True
     else:
         user.own = False
-    return render_template('auth/space.html', user=user)
+    workList = Works.get_usersworks({'u_id': u_id})
+    return render_template('auth/space.html', user=user, workList=workList)
 
 @auth.route('/api/hasFollow', methods=['POST', 'GET'])
 @login_required

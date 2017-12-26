@@ -10,17 +10,17 @@ A place for acger
 首页 | /index
 活动页 | /activity
 作品页（单个作品） | /works/<worksid>
-用户主页 | /user/<userid>
-管理员登录 | /manage/login
+用户主页 | /auth/space/<userid>
+管理员登录 | /auth/adminLogin
 
 #### 动作
 动作 | 接口
 --- | ---
-投稿作品 | /post
-关注用户 | /follow
-取消关注 | /unfollow
-参与活动 | /sign_activity
-评论作品 | /add_comment
+投稿作品 | /works/post
+关注用户 | /auth/api/follow
+取消关注 | /auth/api/unfollow
+参与活动 | /api/sign_activity
+评论作品 | /works/api/postComment
 管理员发起活动 | /add_activity
 管理员添加板块 | /add_plate
 

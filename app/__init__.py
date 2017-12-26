@@ -12,6 +12,7 @@ import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.DEBUG)
 
+IMGCOUNT = 0
 
 #from flask_sqlalchemy import SQLAlchemy
 #from flask_pymongo import PyMongo

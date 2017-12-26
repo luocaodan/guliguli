@@ -52,8 +52,9 @@ def worksPage(w_id):
     parameter = {}
     parameter['w_id'] = w_id
     works = Works.queryWorks(parameter)
+    comments = Comment.queryComment(parameter)
     if works is not None:
-        return render_template('works/works.html', works=works, user=user)
+        return render_template('works/works.html', works=works, user=user, comments=comments)
     return render_template("404.html"), 404
 
 @works.route('/post', methods = ['GET', 'POST'])
