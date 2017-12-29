@@ -23,7 +23,7 @@ def home_page():
         user = User.queryByUserid({'id': u_id}).getUserInfo()
     worksList = Works.get_nworks({'n': 6})
     activityList = Activity.query_nActivity({'n': 6})
-    return render_template('index.html', user=user, worksList=worksList, activityList=activityList)
+    return render_template('index.html', user=user, worksList=worksList, activityList=activityList, curUser=user)
 
 @main.route('/activity/<a_id>')
 @login_required
@@ -35,7 +35,7 @@ def activity(a_id):
     parameter = {}
     parameter['a_id'] = a_id
     act = Activity.queryActivity(parameter)
-    return render_template('/activity.html', user=user, act=act)
+    return render_template('/activity.html', user=user, act=act, curUser=user)
 
 @main.route('/api/insertActivity', methods=['POST', 'GET'])
 def insertActivity():

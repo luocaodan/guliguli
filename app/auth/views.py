@@ -71,7 +71,7 @@ def userinfo():
     user = None
     if u_id is not None:
         user = User.queryByUserid({'id': u_id}).getUserInfo()
-    return render_template('auth/userinfo.html', user=user)
+    return render_template('auth/userinfo.html', curUser=user, user=None)
 
 @auth.route('/api/login', methods=['POST', 'GET'])
 def apiLogin():

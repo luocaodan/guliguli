@@ -54,7 +54,7 @@ def worksPage(w_id):
     works = Works.queryWorks(parameter)
     comments = Comment.queryComment(parameter)
     if works is not None:
-        return render_template('works/works.html', works=works, user=user, comments=comments)
+        return render_template('works/works.html', works=works, user=user, comments=comments, curUser=user)
     return render_template("404.html"), 404
 
 @works.route('/post', methods = ['GET', 'POST'])
@@ -75,7 +75,7 @@ def post():
         r = Works.insertWorks(parameter)
         #return jsonify(r)
         return redirect(url_for('works.worksPage', w_id = r))
-    return render_template('works/post.html', user=user)
+    return render_template('works/post.html', curUser=user, user=user)
 
 @works.route('/api/uploads', methods = ['GET', 'POST'])
 @login_required
