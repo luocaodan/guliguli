@@ -154,16 +154,23 @@ def logout():
 @auth.route('/space/<u_id>')
 @login_required
 def space(u_id):
+    #get space user
     user = User.queryByUserid({'id': u_id})
     if user is None:
         return render_template("404.html"), 404
     user = user.getUserInfo()
+    #get curUser
+    cur_id = current_user.get_id()
+    curUser = None
+    if cur_id is not None:
+        curUser = User.queryByUserid({'id': cur_id}).getUserInfo()
+    #check is own
     if current_user.get_id() is not None and int(user.id) == int(current_user.get_id()):
         user.own = True
     else:
         user.own = False
     worksList = Works.get_usersworks({'u_id': u_id})
-    return render_template('auth/space.html', user=user, worksList=worksList)
+    return render_template('auth/space.html', user=user, curUser = curUser, worksList=worksList)
 
 @auth.route('/api/hasFollow', methods=['POST', 'GET'])
 @login_required
