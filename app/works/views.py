@@ -109,7 +109,7 @@ def apiPostComment():
         parameter = {}
         parameter['txt'] = request.form['txt']
         parameter['w_id'] = request.form['w_id']
-        parameter['u_id'] = '1' #current_user.get_id()
+        parameter['u_id'] = current_user.get_id()
         parameter['d_post'] = request.form['d_post']
         r = Comment.insertComment(parameter)
         if r is None:
