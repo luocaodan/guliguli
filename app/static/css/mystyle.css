@@ -103,6 +103,42 @@ button a:hover {
     margin-left: -250px;
 }
 
+.r-login {
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #25c6ff;
+    color: #fff;
+    font-weight: bold;
+    padding: 0 20px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.r-login:hover {
+    color: #fff; 
+}
+
+.l-register {
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    height: 40px;
+    line-height: 40px;
+    background-color: #25c6ff;
+    color: #fff;
+    font-weight: bold;
+    padding: 0 20px;
+    margin: auto;
+    border-radius: 5px; 
+}
+
+.l-register:hover {
+    color: #fff; 
+}
+
 @keyframes flash {
     0% {
         opacity: 0;
