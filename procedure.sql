@@ -179,7 +179,7 @@ create procedure query_usersworks(u_id int(8))
 create procedure query_nactivity(n int)
     begin
         select * from activity 
-        order by actiivityid desc
+        order by activityid desc
         limit n;
     end//
 
