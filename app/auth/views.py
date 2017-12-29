@@ -182,9 +182,7 @@ def apiHasFollow():
         parameter['uid_2'] = request.form['uid_2']
         user_1 = User.queryByUserid({'id': parameter['uid_1']})
         r = user_1.hasFollow(parameter)
-        if not r:
-            return jsonify(False)
-        return jsonify(True)
+        return jsonify(r)
     return render_template('auth/login.html')
 
 @auth.route('/api/follow', methods=['POST', 'GET'])
