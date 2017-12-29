@@ -2,6 +2,7 @@
 {% block title %}首页{% endblock %}
 {% block content %}
 
+
 <div class="row index-activity">
     <h2>最新活动</h2>
     <div class="col-sm-0 col-md-16">
@@ -18,16 +19,38 @@
 <div class="row">
     <h2>最新作品</h2>
     {% for works in worksList %}
-    <div class="col-sm-0 col-md-4">
-            <div class="thumbnail">
-            <a href="/works/{{works.w_id}}"><img src={{works.img[0]}} alt={{works.w_name}} width="480" height="480"></a>
-            <div class="caption" >
-                <h3>{{works.w_name}}</h3>
-                <a href="/space/{{works.u_id}}"><p></p></a>
-            </div>
+    <div class="col-sm-0 col-md-4 www">
+            <div class="thumbnail1">
+                <div class="w-frame">
+                    <a href="/works/{{works.w_id}}"><img src={{works.img[0]}} alt={{works.w_name}} class="works-align"></a>
+                </div>
+                <div class="caption" >
+                    <h3>{{works.w_name}}</h3>
+                    <a href="/space/{{works.u_id}}"><p></p></a>
+                </div>
             </div>
     </div>
     {% endfor %}
 </div>
-
+<script>
+        var works_list = $(".works-align");
+        for(var i = 0;i < works_list.length;i++) {
+            var temp = works_list[i];
+            var t_width = temp.width;
+            var t_height = temp.height;
+    
+            var flag = t_width / t_height;
+            if(flag < 1) {
+                temp.style.height = "350px";
+                t_width = temp.width;
+                console.log(t_width);
+                temp.style.marginLeft = Math.floor(((350-t_width)/2)) + "px";
+            }
+            else if(flag > 1) {
+                temp.style.width = "350px";
+                t_height = temp.height;
+                temp.style.marginTop = Math.floor(((350-t_height)/2)) + "px";
+            }
+        }
+    </script>
 {% endblock %}

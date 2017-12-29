@@ -516,3 +516,17 @@ textarea.comment-textarea {
 .a-content {
     margin-left: 24px;
 }
+
+.works-align {
+
+}
+
+.w-frame {
+    border: 1px solid rgba(0,0,0,0.05);
+    width: 351px;
+    height: 351px;
+}
+
+.www {
+    margin-top: 50px;
+}
