@@ -46,24 +46,26 @@ def test_post():
 @works.route('/<w_id>')
 def worksPage(w_id):
     u_id = current_user.get_id()
-    user = None
+    curUser = None
     if u_id is not None:
-        user = User.queryByUserid({'id': u_id}).getUserInfo()
+        curUser = User.queryByUserid({'id': u_id}).getUserInfo()
     parameter = {}
     parameter['w_id'] = w_id
     works = Works.queryWorks(parameter)
+    user = None
+    user = User.queryByUserid({'id': works['u_id']}).getUserInfo()
     comments = Comment.queryComment(parameter)
     if works is not None:
-        return render_template('works/works.html', works=works, user=user, comments=comments, curUser=user)
+        return render_template('works/works.html', works=works, user=user, comments=comments, curUser=curUser)
     return render_template("404.html"), 404
 
 @works.route('/post', methods = ['GET', 'POST'])
 @login_required
 def post():
     u_id = current_user.get_id()
-    user = None
+    curUser = None
     if u_id is not None:
-        user = User.queryByUserid({'id': u_id}).getUserInfo()
+        curUser = User.queryByUserid({'id': u_id}).getUserInfo()
     if request.method == 'POST':
         parameter = {}
         parameter['u_id'] = current_user.id
@@ -75,7 +77,7 @@ def post():
         r = Works.insertWorks(parameter)
         #return jsonify(r)
         return redirect(url_for('works.worksPage', w_id = r))
-    return render_template('works/post.html', curUser=user, user=user)
+    return render_template('works/post.html', curUser=curUser, user=None)
 
 @works.route('/api/uploads', methods = ['GET', 'POST'])
 @login_required
