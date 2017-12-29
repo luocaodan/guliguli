@@ -3,7 +3,7 @@ t_query_user_username = u"call query_user_username('{name}')"
 t_query_user_userid = u"call query_user_userid({id})"
 t_query_countuser_username = u"call query_countuser_username('{name}')"
 
-t_query_alluser = u"call query_alluser()"
+#t_query_alluser = u"call query_alluser()"
 
 t_insert_user = u"call insert_user('{name}', '{pwd}', '{nick}', '{photo}', '{birth}', '{reg_date}', '{signa}', {fol}, {fan}, '{sex}')"
 
