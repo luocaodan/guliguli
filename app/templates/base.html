@@ -28,7 +28,7 @@
                 {% block user %}
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="/auth/space/{{ user.id }}" class="avtar"><img class="nav-photo" src="{{ user.profile_photo }}"></a>
+                        <a href="/auth/space/{{ curUser.id }}" class="avtar"><img class="nav-photo" src="{{ curUser.profile_photo }}"></a>
                     </li>
                     <li class="dropdown" onclick="popup()">
                         <a href="#" class="dropdown-toggle"> 
