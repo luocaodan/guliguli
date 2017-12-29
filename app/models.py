@@ -313,6 +313,12 @@ class Activity():
         return r
 
     @staticmethod
+    def insertActivity(parameter):
+        template = t_insert_activity
+        r = db.runInsertSql(template, parameter)
+        return r
+
+    @staticmethod
     def signActivity(parameter):
         template = t_delete_sign_ac
         r = db.runInsertSql(template, parameter)

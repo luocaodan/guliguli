@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from flask import render_template, session, redirect, url_for,flash, current_app, request, make_response, jsonify
 from datetime import datetime
 from . import main
@@ -34,6 +36,26 @@ def activity(a_id):
     parameter['a_id'] = a_id
     act = Activity.queryActivity(parameter)
     return render_template('/activity.html', user=user, act=act)
+
+@main.route('/api/insertActivity', methods=['POST', 'GET'])
+def insertActivity():
+    '''
+    def test():
+        data = {}
+        data['cont'] = u'二次元萌什么~'
+        data['d_release'] = '2018-1-1'
+        data['img'] = '/static/image/596loyx0vk.png'
+        r = requests.post('http://127.0.0.1:5000/api/insertActivity', data=data)
+        print r.text
+    '''
+    if request.method == 'POST':
+        parameter = {}
+        parameter['cont'] = request.form['cont']
+        parameter['img'] = request.form['img']
+        parameter['d_release'] = request.form['d_release']
+        r = Activity.insertActivity(parameter)
+        return jsonify(r)
+    return render_template('index.html')
 
 @main.route('/api/hasSignActivity', methods=['POST', 'GET'])
 @login_required
