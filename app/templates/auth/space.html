@@ -138,21 +138,25 @@
             
     </div>
 </div>
-
-<div class="works_box">
-        <p><hr></P>
-        <h2>个人作品</h2>
-        {% for works in worksList %}
-        <div class="row">
-            <div class="col-xs-3 col-md-1"><a href="/works/{{works.w_id}}">
-                <img src={{works.img[0]}} width="64" height="64" ></a></br>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        <div class="works_box">
+            <p><hr></P>
+            <h2>个人作品</h2>
+            {% for works in worksList %}
+            <div class="row">
+                <div class="col-xs-3 col-md-1"><a href="/works/{{works.w_id}}">
+                    <img src={{works.img[0]}} width="64" height="64" ></a></br>
+                </div>
+                <div class="col-xs-9 col-md-11">
+                    <p></br>{{works.cont}}</p>
+                    <small>{{ works.d_post }}</small></br>
+                </div>
             </div>
-            <div class="col-xs-9 col-md-11">
-                <p></br>{{works.cont}}</p>
-                <small>{{ works.d_post }}</small></br>
-            </div>
+            <p><hr></P>
+            {% endfor %}
         </div>
-        <p><hr></P>
-        {% endfor %}
     </div>
+</div>
 {% endblock %}
