@@ -170,7 +170,7 @@ def runInsertSql(tmplate, parameters):
         cursor = _db_ctx.connection.cursor()
         cursor.execute(sql)
         #if transaction
-        r = cursor.lastrowid
+        r = cursor.rowcount
         if _db_ctx.transcations == 0:
             current_app.logger.info('auto commit')
             _db_ctx.connection.commit()
