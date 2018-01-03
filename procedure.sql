@@ -9,6 +9,17 @@ delimiter //  -- 改变分隔符
     传入: 用户名
     根据用户名查找用户
 */
+create procedure query_alluser()
+    begin
+        select * from users
+        order by userid desc;
+    end//
+
+/*
+    query_by_username
+    传入: 用户名
+    根据用户名查找用户
+*/
 create procedure query_user_username(name varchar(16))
     begin
         select * from users 
