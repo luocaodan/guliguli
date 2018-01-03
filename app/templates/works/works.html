@@ -82,11 +82,11 @@
                 var content = 
                     '<p><hr></P>\
                     <div class="row">\
-                        <div class="col-xs-3 col-md-1"><a href="/auth/space/{{ user.id }}">\
-                            <img class="comment-photo" src="{{ user.profile_photo }}" width="64" height="64" ></a>\
+                        <div class="col-xs-3 col-md-1"><a href="/auth/space/{{ curUser.id }}">\
+                            <img class="comment-photo" src="{{ curUser.profile_photo }}" width="64" height="64" ></a>\
                         </div>\
                         <div class="col-xs-9 col-md-10 comment-content">\
-                            <a href="/auth/space/{{ user.id }}">{{ user.nickname }}:</a>\
+                            <a href="/auth/space/{{ curUser.id }}">{{ curUser.nickname }}:</a>\
                             <p class="comment-txt"></br>' + text + '</p>\
                             <small class="comment-day">' + d_post.replace('/', '-') + '</small></br>\
                         </div>\
